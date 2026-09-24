@@ -1,0 +1,61 @@
+/* ---------- pill toggle (brand / influencer switch) ---------- */
+
+.pill-toggle {
+  position: relative;
+  display: inline-grid;
+  grid-template-columns: repeat(2, minmax(120px, 1fr));
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: 999px;
+  padding: 0.3rem;
+}
+
+.pill-toggle-thumb {
+  position: absolute;
+  top: 0.3rem;
+  bottom: 0.3rem;
+  left: 0.3rem;
+  width: calc(50% - 0.3rem);
+  background: var(--ink);
+  border-radius: 999px;
+  transition: transform 0.28s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.pill-toggle-thumb.right {
+  transform: translateX(100%);
+}
+
+.pill-toggle-btn {
+  position: relative;
+  z-index: 1;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  cursor: pointer;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.pill-toggle-btn.active {
+  color: var(--on-ink);
+}
+
+.pill-toggle-btn:hover:not(.active) {
+  color: var(--ink);
+}
+
+@media (max-width: 420px) {
+  .pill-toggle {
+    grid-template-columns: repeat(2, minmax(96px, 1fr));
+  }
+
+  .pill-toggle-btn {
+    padding: 0.55rem 0.7rem;
+    font-size: 0.86rem;
+  }
+}
