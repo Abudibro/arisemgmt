@@ -1,0 +1,27 @@
+/* ---------- waffle grid (one animated background spanning Hero + HowWeWork) ---------- */
+
+/* wraps everything the grid runs behind */
+.waffle-host {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* The grid is strongest on the right (open space beside the hero copy and
+   the steps) and stays faint behind the text on the left. It fades in under
+   the nav and out before the contact section. */
+.waffle-grid {
+  --grid-spot: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.45) 40%, #000 78%);
+  --grid-edges: linear-gradient(to bottom, transparent, #000 80px, #000 calc(100% - 220px), transparent);
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+  -webkit-mask-image: var(--grid-spot), var(--grid-edges);
+  -webkit-mask-composite: source-in;
+  mask-image: var(--grid-spot), var(--grid-edges);
+  mask-composite: intersect;
+}

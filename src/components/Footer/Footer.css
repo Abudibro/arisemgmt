@@ -11,17 +11,17 @@ footer {
   gap: 1rem;
   justify-content: space-between;
   align-items: center;
-  color: var(--ink-soft);
+  color: var(--fg-soft);
   font-size: 0.92rem;
 }
 
 .foot-in a {
-  color: var(--ink-soft);
+  color: var(--fg-soft);
   text-decoration: none;
 }
 
 .foot-in a:hover {
-  color: var(--ink);
+  color: var(--fg);
 }
 
 .foot-mark {

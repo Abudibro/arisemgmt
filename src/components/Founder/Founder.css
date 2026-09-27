@@ -1,8 +1,8 @@
 /* ---------- founder / video : the one bold field ---------- */
 
 .founder {
-  background: var(--ink);
-  color: var(--on-ink);
+  background: var(--panel);
+  border-block: 1px solid var(--line);
 }
 
 .founder-wrap {
@@ -52,7 +52,7 @@
   height: 66px;
   border-radius: 50%;
   background: var(--accent);
-  color: var(--ink);
+  color: var(--on-accent);
   display: flex;
   align-items: center;
   justify-content: center;

@@ -14,7 +14,7 @@
 
 .contact-toggle {
   margin-bottom: clamp(2rem, 5vw, 3rem);
-  background: var(--paper);
+  background: var(--bg);
 }
 
 .contact-grid {
@@ -36,7 +36,7 @@
 
 .contact-grid .left p {
   margin-top: 1rem;
-  color: var(--ink-soft);
+  color: var(--fg-soft);
   font-size: 1.1rem;
   max-width: 40ch;
 }
@@ -47,15 +47,15 @@
 }
 
 .contact-grid .left .direct a {
-  color: var(--ink);
+  color: var(--fg);
   font-weight: 600;
   text-decoration: underline;
-  text-decoration-color: var(--ink-soft);
+  text-decoration-color: var(--fg-soft);
   text-underline-offset: 3px;
 }
 
 .contact-grid .left .direct a:hover {
-  text-decoration-color: var(--ink);
+  text-decoration-color: var(--fg);
 }
 
 @media (max-width: 780px) {
@@ -86,8 +86,8 @@ form {
 .field textarea {
   font-family: inherit;
   font-size: 1rem;
-  color: var(--ink);
-  background: var(--paper);
+  color: var(--fg);
+  background: var(--bg);
   border: 1px solid var(--line);
   border-radius: 10px;
   padding: 0.8rem 0.9rem;
@@ -97,7 +97,7 @@ form {
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
-  border-color: var(--ink);
+  border-color: var(--fg);
 }
 
 .field textarea {
@@ -123,7 +123,7 @@ form {
 
 .form-note {
   font-size: 0.85rem;
-  color: var(--ink-soft);
+  color: var(--fg-soft);
 }
 
 .form-error {

@@ -9,7 +9,7 @@
   align-items: center;
   gap: 0.55rem;
   font-weight: 500;
-  color: var(--ink-soft);
+  color: var(--fg-soft);
   font-size: 0.98rem;
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -22,7 +22,7 @@
   height: 8px;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 0 1px var(--ink);
+  box-shadow: 0 0 0 1px var(--fg);
   position: relative;
 }
 
@@ -31,7 +31,7 @@
   position: absolute;
   inset: -5px;
   border-radius: 50%;
-  border: 1px solid var(--ink);
+  border: 1px solid var(--fg);
   opacity: 0.5;
   animation: ping 2.4s ease-out infinite;
 }
@@ -58,12 +58,12 @@
   margin-top: 1.6rem;
   max-width: 54ch;
   font-size: clamp(1.1rem, 1.02rem + 0.4vw, 1.32rem);
-  color: var(--ink-soft);
+  color: var(--fg-soft);
   line-height: 1.5;
 }
 
 .hero .lede strong {
-  color: var(--ink);
+  color: var(--fg);
   font-weight: 600;
 }
 

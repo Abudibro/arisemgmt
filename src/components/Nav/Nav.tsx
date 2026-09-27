@@ -7,7 +7,7 @@ export default function Nav() {
     <header className="nav">
       <div className="wrap nav-in">
         <a href="#top" className="mark">
-          <img src="/arise-mark.svg" alt={BRAND} />
+          <img src="/arise-mark-light.svg" alt={BRAND} />
         </a>
         <nav className="nav-links">
           <a href="#how" className="text">{NAV.howWeWorkLink}</a>
