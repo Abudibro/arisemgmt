@@ -159,3 +159,20 @@ textarea:focus-visible {
 section {
   padding: clamp(3.5rem, 7vw, 6rem) 0;
 }
+
+/* ---------- section header (used by HowWeWork + the roster page) ---------- */
+
+.sec-head {
+  max-width: 40ch;
+}
+
+.sec-head h2 {
+  font-size: clamp(2rem, 1.4rem + 2.4vw, 3.1rem);
+}
+
+.sec-head p {
+  margin-top: 0.9rem;
+  color: var(--fg-soft);
+  font-size: 1.1rem;
+  max-width: 52ch;
+}

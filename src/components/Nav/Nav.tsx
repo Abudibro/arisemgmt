@@ -2,7 +2,13 @@ import { BRAND } from '../../config.ts';
 import { CTA, NAV } from '../../content.ts';
 import './Nav.css';
 
-export default function Nav() {
+interface NavProps {
+  /** Right-hand button. Defaults to the homepage's "Book a call". */
+  cta?: { label: string; href: string };
+  showHowLink?: boolean;
+}
+
+export default function Nav({ cta = { label: CTA.bookACall, href: '#contact' }, showHowLink = true }: NavProps) {
   return (
     <header className="nav">
       <div className="wrap nav-in">
@@ -10,8 +16,8 @@ export default function Nav() {
           <img src="/arise-mark-light.svg" alt={BRAND} />
         </a>
         <nav className="nav-links">
-          <a href="#how" className="text">{NAV.howWeWorkLink}</a>
-          <a href="#contact" className="btn btn-primary">{CTA.bookACall}</a>
+          {showHowLink && <a href="#how" className="text">{NAV.howWeWorkLink}</a>}
+          <a href={cta.href} className="btn btn-primary">{cta.label}</a>
         </nav>
       </div>
     </header>

@@ -6,11 +6,12 @@
     "skipLibCheck": true,
 
     "moduleResolution": "bundler",
+    "resolveJsonModule": true,
     "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "moduleDetection": "force",
     "noEmit": true,
     "strict": true
   },
-  "include": ["vite.config.ts"]
+  "include": ["vite.config.ts", "src/roster/schema.ts", "src/roster/deck-export.public.json"]
 }

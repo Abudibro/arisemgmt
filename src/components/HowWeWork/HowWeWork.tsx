@@ -1,4 +1,5 @@
 import PillToggle from '../PillToggle/PillToggle.tsx';
+import Steps from '../Steps/Steps.tsx';
 import { HOW_WE_WORK } from '../../content.ts';
 import type { Audience } from '../../types.ts';
 import './HowWeWork.css';
@@ -27,17 +28,7 @@ export default function HowWeWork({ audience, onAudienceChange }: HowWeWorkProps
           rightValue="influencer"
           rightLabel={HOW_WE_WORK.toggle.influencerLabel}
         />
-        <div className="steps">
-          {steps.map((step, i) => (
-            <div className="step" key={step.title}>
-              <div className="num"><span className="hl">{String(i + 1).padStart(2, '0')}</span></div>
-              <div>
-                <h3>{step.title}</h3>
-                <p>{step.body}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <Steps steps={steps} />
       </div>
     </section>
   );

@@ -1,0 +1,203 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-12T23:36:40Z",
+  "dataAsOf": "2026-10-12T23:36:41Z",
+  "window": "last 15 long-form videos (over 3 minutes, no livestreams)",
+  "roster": {
+    "brands": [
+      "Base44",
+      "Cookiebot by Usercentrics",
+      "Databricks",
+      "DataCamp",
+      "Dell",
+      "Hyperagent",
+      "Lovable",
+      "NVIDIA",
+      "Render",
+      "RunPod",
+      "Runway",
+      "Sanity",
+      "Semrush",
+      "Superblocks",
+      "TrueFoundry"
+    ],
+    "combinedMedianViews": 157195,
+    "combinedUploadsPerMonth": 25.1,
+    "sponsoredViewsVsMedian": 0.96
+  },
+  "creators": [
+    {
+      "id": "creator-a",
+      "alias": "Creator A",
+      "niche": null,
+      "subscriberCount": 135000,
+      "medianViews": 64901,
+      "meanViews": 99185,
+      "videosAnalysed": 15,
+      "uploadsPerMonth": 8.7,
+      "recentVideos": [
+        {
+          "month": "2026-10",
+          "views": 130000,
+          "durationMinutes": 10,
+          "topic": null
+        },
+        {
+          "month": "2026-09",
+          "views": 15000,
+          "durationMinutes": 19,
+          "topic": null
+        },
+        {
+          "month": "2026-09",
+          "views": 52000,
+          "durationMinutes": 20,
+          "topic": null
+        }
+      ],
+      "confirmedSponsorshipCount": 5,
+      "formats": {
+        "integration": 5,
+        "dedicated": 0
+      },
+      "brandCategories": [
+        "ai compute",
+        "ai dev tool",
+        "gpu cloud",
+        "hardware",
+        "hardware/compute"
+      ],
+      "sponsoredViewsVsMedian": 0.82,
+      "audience": {
+        "usUkPercent": 37.0,
+        "topCountries": [],
+        "ageBand": "25–54 (78.8%)",
+        "avgViewDuration": null
+      },
+      "pastResults": [],
+      "todo": [
+        "niche",
+        "recentVideos[].topic",
+        "audience.topCountries",
+        "audience.avgViewDuration",
+        "pastResults"
+      ]
+    },
+    {
+      "id": "creator-b",
+      "alias": "Creator B",
+      "niche": null,
+      "subscriberCount": 170000,
+      "medianViews": 50227,
+      "meanViews": 65810,
+      "videosAnalysed": 15,
+      "uploadsPerMonth": 10.7,
+      "recentVideos": [
+        {
+          "month": "2026-10",
+          "views": 35000,
+          "durationMinutes": 13,
+          "topic": null
+        },
+        {
+          "month": "2026-10",
+          "views": 17000,
+          "durationMinutes": 14,
+          "topic": null
+        },
+        {
+          "month": "2026-10",
+          "views": 38000,
+          "durationMinutes": 16,
+          "topic": null
+        }
+      ],
+      "confirmedSponsorshipCount": 0,
+      "formats": {
+        "integration": 0,
+        "dedicated": 0
+      },
+      "brandCategories": [],
+      "sponsoredViewsVsMedian": null,
+      "audience": {
+        "usUkPercent": 25.2,
+        "topCountries": [],
+        "ageBand": "25–54 (83%)",
+        "avgViewDuration": null
+      },
+      "pastResults": [
+        {
+          "label": "Sponsorship click-through rate",
+          "value": "7–10%"
+        }
+      ],
+      "todo": [
+        "niche",
+        "recentVideos[].topic",
+        "audience.topCountries",
+        "audience.avgViewDuration"
+      ]
+    },
+    {
+      "id": "creator-c",
+      "alias": "Creator C",
+      "niche": null,
+      "subscriberCount": 476000,
+      "medianViews": 42067,
+      "meanViews": 43275,
+      "videosAnalysed": 15,
+      "uploadsPerMonth": 5.7,
+      "recentVideos": [
+        {
+          "month": "2026-10",
+          "views": 3500,
+          "durationMinutes": 22,
+          "topic": null
+        },
+        {
+          "month": "2026-10",
+          "views": 82000,
+          "durationMinutes": 54,
+          "topic": null
+        },
+        {
+          "month": "2026-10",
+          "views": 42000,
+          "durationMinutes": 37,
+          "topic": null
+        }
+      ],
+      "confirmedSponsorshipCount": 12,
+      "formats": {
+        "integration": 12,
+        "dedicated": 0
+      },
+      "brandCategories": [
+        "ai agent platform",
+        "ai dev tool",
+        "ai video platform",
+        "cloud hosting",
+        "data & ai platform",
+        "education",
+        "no-code platform",
+        "privacy compliance",
+        "seo and ai visibility tool"
+      ],
+      "sponsoredViewsVsMedian": 0.96,
+      "audience": {
+        "usUkPercent": 13.6,
+        "topCountries": [],
+        "ageBand": "25–54 (81.1%)",
+        "avgViewDuration": null
+      },
+      "pastResults": [],
+      "todo": [
+        "niche",
+        "recentVideos[].topic",
+        "audience.topCountries",
+        "audience.avgViewDuration",
+        "pastResults"
+      ]
+    }
+  ]
+}
