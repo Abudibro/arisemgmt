@@ -266,6 +266,11 @@
   print-color-adjust: exact;
 }
 
+.platform-mark-sm {
+  width: 22px;
+  height: 22px;
+}
+
 .creator-niche {
   margin-top: 0.35rem;
   color: var(--fg-soft);
@@ -585,7 +590,9 @@
 }
 
 .price-alias {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   font-family: "Bricolage Grotesque", sans-serif;
   font-weight: 700;
   font-size: 1.3rem;

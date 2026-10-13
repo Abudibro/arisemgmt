@@ -5,9 +5,11 @@ interface PricingProps {
   creators: RosterCreator[];
   formats: FormatOffer[];
   copy: RosterCopy['pricing'];
+  /** Accessible name for the YouTube mark (shared with the creator cards). */
+  platformLabel: string;
 }
 
-export default function Pricing({ creators, formats, copy }: PricingProps) {
+export default function Pricing({ creators, formats, copy, platformLabel }: PricingProps) {
   return (
     <section id="pricing">
       <div className="wrap">
@@ -26,7 +28,10 @@ export default function Pricing({ creators, formats, copy }: PricingProps) {
             {creators.map((c) => (
               <tr id={`pricing-${c.id}`} key={c.id}>
                 <th scope="row">
-                  <span className="price-alias">{c.alias}</span>
+                  <span className="price-alias">
+                    {c.alias}
+                    <span className="platform-mark platform-mark-sm" role="img" aria-label={platformLabel} title={platformLabel} />
+                  </span>
                   {c.niche && <span className="price-niche">{c.niche}</span>}
                   <span className="price-views">{fill(copy.medianViews, { views: formatViews(c.medianViews) })}</span>
                 </th>

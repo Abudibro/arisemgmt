@@ -44,7 +44,7 @@ export default function RosterPage({ data, content, isSample = false }: RosterPa
         <Proof data={data} copy={copy.proof} />
         <WhatYouGet formats={content.formats} creators={data.creators} copy={copy.whatYouGet} />
         <HowItWorks steps={content.steps} copy={copy.howItWorks} />
-        <Pricing creators={data.creators} formats={content.formats} copy={copy.pricing} />
+        <Pricing creators={data.creators} formats={content.formats} copy={copy.pricing} platformLabel={copy.roster.platformLabel} />
         <Terms faq={content.faq} copy={copy.terms} />
         <NextStep copy={copy.nextStep} />
       </main>
