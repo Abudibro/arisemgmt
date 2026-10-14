@@ -22,6 +22,11 @@ export function formatPercentValue(percent: number): string {
   return `${Math.round(percent)}%`;
 }
 
+/** One decimal, as YouTube Studio shows it: 33.4 → "33.4%", 30 → "30.0%" */
+export function formatShare(percent: number): string {
+  return `${percent.toFixed(1)}%`;
+}
+
 const usd = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0, minimumFractionDigits: 0 });
 
 /** 7500 → "$7,500" */

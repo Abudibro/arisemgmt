@@ -8,9 +8,11 @@
 //  - Values here win over deck-export.public.json when they're filled in.
 //  - In `npm run dev`, a banner in the corner lists everything still unfilled.
 
+import { FOUNDER_PROFILE } from '../content.ts';
 import type { CreatorContent, RosterContent } from './types.ts';
 
-// Default prices for every creator — change any creator's below.
+// Fallback prices for a creator without their own `prices` below. Each current
+// creator sets theirs: roughly the same cost per 1,000 views, adjusted for audience.
 const DEFAULT_PRICES = { integration: 3500, dedicated: 7500 };
 
 const emptyCreator = (): CreatorContent => ({
@@ -24,18 +26,141 @@ const emptyCreator = (): CreatorContent => ({
   recentVideoTopics: [null, null, null], // same order as recentVideos in the export
   pastResults: [], // e.g. [{ label: "Dedicated video, AI infra brand", value: "71k views" }]
   prices: { ...DEFAULT_PRICES },
+  studio: null, // YouTube Studio audience numbers; see creator-a for the shape
 });
 
 export const rosterContent: RosterContent = {
   creators: {
-    'creator-a': emptyCreator(),
-    'creator-b': emptyCreator(),
-    'creator-c': emptyCreator(),
+    'creator-a': {
+      ...emptyCreator(),
+      audience: { ...emptyCreator().audience, topCountries: ['United States', 'India', 'Germany'] },
+      prices: { integration: 4000, dedicated: 8500 },
+      // Copied from YouTube Studio > Analytics > Audience, last 28 days.
+      studio: {
+        period: 'Last 28 days',
+        gender: [
+          { label: 'Male', percent: 95.4 },
+          { label: 'Female', percent: 4.4 },
+          { label: 'User-specified', percent: 0.2 },
+        ],
+        age: [
+          { label: '13–17', percent: 1.5 },
+          { label: '18–24', percent: 7.6 },
+          { label: '25–34', percent: 30.0 },
+          { label: '35–44', percent: 29.2 },
+          { label: '45–54', percent: 19.6 },
+          { label: '55–64', percent: 8.6 },
+          { label: '65+', percent: 3.4 },
+        ],
+        countries: [
+          { label: 'United States', percent: 33.4 },
+          { label: 'India', percent: 7.1 },
+          { label: 'Germany', percent: 5.1 },
+          { label: 'United Kingdom', percent: 3.6 },
+          { label: 'Canada', percent: 3.0 },
+        ],
+        devices: [
+          { label: 'Computer', percent: 38.3 },
+          { label: 'Mobile phone', percent: 31.6 },
+          { label: 'TV', percent: 22.6 },
+          { label: 'Tablet', percent: 6.7 },
+        ],
+        // Never add "Top videos": titles and thumbnails identify the channel.
+        screenshots: [
+          { src: '/roster/creator-a/age-gender.png', alt: 'YouTube Studio: age and gender, last 28 days', width: 627, height: 788 },
+          { src: '/roster/creator-a/geographies.png', alt: 'YouTube Studio: top geographies, last 28 days', width: 644, height: 464 },
+          { src: '/roster/creator-a/devices.png', alt: 'YouTube Studio: device type by watch time, last 28 days', width: 655, height: 444 },
+        ],
+      },
+    },
+    'creator-b': {
+      ...emptyCreator(),
+      audience: {
+        ...emptyCreator().audience,
+        topCountries: ['United States', 'India', 'Germany'],
+        avgViewDuration: '3:32', // from the creator's media kit
+      },
+      // Kept close to the creator's public media-kit rate ($1,900). Their kit
+      // doesn't offer dedicated videos, so that shows "On request".
+      prices: { integration: 2500, dedicated: null },
+      // From the creator's own media kit, which doesn't state a source or period.
+      // Replace with YouTube Studio numbers + screenshots when you have them.
+      studio: {
+        source: 'Creator’s media kit',
+        period: null,
+        gender: [{ label: 'Male', percent: 95.7 }],
+        age: [
+          { label: '18–24', percent: 9.1 },
+          { label: '25–34', percent: 33.5 },
+          { label: '35–44', percent: 31.9 },
+          { label: '45–54', percent: 17.7 },
+          { label: '55–64', percent: 5.8 },
+          { label: '65+', percent: 1.5 },
+        ],
+        countries: [
+          { label: 'United States', percent: 21.5 },
+          { label: 'India', percent: 10.1 },
+          { label: 'Germany', percent: 4.9 },
+          { label: 'United Kingdom', percent: 3.7 },
+          { label: 'Brazil', percent: 3.6 },
+        ],
+        devices: [],
+        screenshots: [], // never screenshot the media kit: it's branded with the channel name
+      },
+    },
+    'creator-c': {
+      ...emptyCreator(),
+      audience: { ...emptyCreator().audience, topCountries: ['India', 'United States', 'United Kingdom'] },
+      prices: { integration: 2500, dedicated: 5500 },
+      studio: {
+        period: 'Last 28 days',
+        // TODO: Abdurahman to confirm the date range of the geography table
+        // (the screenshot doesn't show it). Until then no period is shown.
+        periods: { countries: null },
+        gender: [
+          { label: 'Male', percent: 98.6 },
+          { label: 'Female', percent: 1.4 },
+          { label: 'User-specified', percent: 0.1 },
+        ],
+        age: [
+          { label: '13–17', percent: 0.3 },
+          { label: '18–24', percent: 18.4 },
+          { label: '25–34', percent: 46.2 },
+          { label: '35–44', percent: 33.9 },
+          { label: '45–54', percent: 1.0 },
+          { label: '55–64', percent: 0.2 },
+          { label: '65+', percent: 0 },
+        ],
+        // Share of views, from the geography table.
+        countries: [
+          { label: 'India', percent: 31.3 },
+          { label: 'United States', percent: 10.9 },
+          { label: 'United Kingdom', percent: 2.7 },
+          { label: 'Philippines', percent: 2.0 },
+          { label: 'Canada', percent: 1.9 },
+        ],
+        devices: [],
+        // The geography table isn't published: its totals row (exact lifetime-style
+        // view and subscriber counts) could be matched to the channel.
+        screenshots: [
+          { src: '/roster/creator-c/age-gender.png', alt: 'YouTube Studio: age and gender, last 28 days', width: 1140, height: 1150 },
+        ],
+      },
+    },
   },
 
   // Roster-level proof, one short line each.
   // e.g. "AI infrastructure brand · dedicated video · 71k views"
-  caseNotes: [],
+  // From Creator B's media kit. Brands are replaced by their category and views
+  // rounded, so the videos can't be looked up. Kit's "+13% signups" (Cline) left
+  // out: the kit doesn't say how it was measured.
+  caseNotes: [
+    'Developer terminal · natural drop-in · 191k views · 7.3% CTR',
+    'Developer infrastructure · natural drop-in · 85k views · 10.3% CTR',
+    'AI coding agent · natural drop-in · 91k views · 7.9% CTR',
+    'Automation platform · 60-second integration · 53k views · 7% CTR',
+    'AI model provider · 60-second integration · 40k views · 8% CTR',
+  ],
 
   // Brand name (exactly as in the export) → a square, single-colour mark under
   // /public. The page tints it grey and shows the name next to it. Brands
@@ -131,6 +256,13 @@ export const rosterContent: RosterContent = {
     },
   ],
 
+  // Name, role and photo are shared with the homepage (FOUNDER_PROFILE in src/content.ts).
+  // TODO: Abdurahman to check this wording.
+  founder: {
+    ...FOUNDER_PROFILE,
+    body: 'I’m the person you’ll deal with, from the first email to the 30-day numbers. I work with each creator directly.',
+  },
+
   copy: {
     nav: { cta: 'Email us' },
 
@@ -200,6 +332,19 @@ export const rosterContent: RosterContent = {
       sponsoredViewsLine: 'Sponsored videos get {x} of this channel’s usual views.',
       pastResultsLabel: 'Past results',
       pricingLink: 'See pricing for {alias} →',
+    },
+
+    studio: {
+      heading: 'Who’s watching.',
+      sub: 'Audience numbers from each creator’s YouTube Studio, or their media kit where marked. Original Studio screenshots are below each set.',
+      periodLabel: '{source} · {period}',
+      sourceLabel: 'YouTube Studio',
+      charts: { gender: 'Gender', age: 'Age', countries: 'Top countries', devices: 'Device' },
+      devicesNote: 'Share of watch time',
+      screenshotsToggle: 'See the original screenshots',
+      carouselTabsLabel: 'Choose a creator',
+      carouselPrev: 'Previous creator',
+      carouselNext: 'Next creator',
     },
 
     proof: {

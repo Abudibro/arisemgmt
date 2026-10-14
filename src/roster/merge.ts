@@ -46,6 +46,7 @@ export function mergeRoster(data: DeckExport, content: RosterContent): RosterDat
       },
       pastResults: pickList(manual.pastResults, c.pastResults).filter((r) => filledText(r.label) && filledText(r.value)),
       prices: manual.prices,
+      studio: manual.studio,
     };
   });
 
@@ -72,6 +73,8 @@ export const showSponsoredRatio = (ratio: number | null): ratio is number =>
 
 export const visibleRecentVideos = (creator: RosterCreator) =>
   creator.recentVideos.slice(0, RECENT_VIDEOS_SHOWN).filter((video) => video.topic !== null);
+
+export const creatorsWithStudio = (data: RosterData) => data.creators.filter((c) => c.studio !== null);
 
 export const showProof = (data: RosterData) =>
   showSponsoredRatio(data.sponsoredViewsVsMedian) || data.caseNotes.length > 0;
@@ -100,6 +103,7 @@ export function listUnfilled(data: RosterData): string[] {
     if (c.sponsoredViewsVsMedian === null) add('sponsoredViewsVsMedian (export)');
     if (c.prices.integration === null) add('prices.integration (shows "On request")');
     if (c.prices.dedicated === null) add('prices.dedicated (shows "On request")');
+    if (c.studio === null) add('studio (YouTube Studio audience panel)');
   }
   return missing;
 }

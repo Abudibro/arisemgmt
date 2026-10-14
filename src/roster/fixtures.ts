@@ -43,6 +43,7 @@ const emptyCreator = (): CreatorContent => ({
   recentVideoTopics: [null, null, null],
   pastResults: [],
   prices: { integration: 3500, dedicated: 7500 },
+  studio: null,
 });
 
 /** The real copy, with every per-creator value empty. */
@@ -52,5 +53,6 @@ export function makeContent(): RosterContent {
     creators: { 'creator-a': emptyCreator(), 'creator-b': emptyCreator(), 'creator-c': emptyCreator() },
     caseNotes: [],
     sponsorLogos: {},
+    founder: null,
   };
 }

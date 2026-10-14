@@ -78,8 +78,18 @@ export const FOUNDER = {
   placeholderHint: 'Record a 60–90 second video introducing yourselves.',
 };
 
+// The person behind Arise. Shared by the homepage contact section and /roster.
+// First name only, so the site doesn't point at a day job; add a surname if you want it.
+export const FOUNDER_PROFILE = {
+  name: 'Abdurahman',
+  role: 'Founder, Arise',
+  photo: '/founder.jpg',
+};
+
 export const CONTACT = {
   heading: "Let's talk.",
+  // TODO: Abdurahman to check this wording. It sits under the email link, for brands and creators alike.
+  founderBody: 'You’ll deal with me directly, from the first message to the end of the campaign.',
   body: "If it's a fit, you'll hear back within a day. If it's not, we'll tell you that too — and point you somewhere better.",
   directPrefix: 'Rather just email?',
   toggle: {

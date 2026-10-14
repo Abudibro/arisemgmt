@@ -1,6 +1,7 @@
 import { useRef, useState, type FormEvent } from 'react';
 import { EMAIL } from '../../config.ts';
-import { CONTACT } from '../../content.ts';
+import { CONTACT, FOUNDER_PROFILE } from '../../content.ts';
+import FounderCard from '../FounderCard/FounderCard.tsx';
 import PillToggle from '../PillToggle/PillToggle.tsx';
 import ContactForm from './ContactForm.tsx';
 import { CONTACT_FORMS } from './formFields.ts';
@@ -54,6 +55,7 @@ export default function Contact({ audience, onAudienceChange }: ContactProps) {
             <h2>{CONTACT.heading}</h2>
             <p>{CONTACT.body}</p>
             <p className="direct">{CONTACT.directPrefix} <a href={`mailto:${EMAIL}`}>{EMAIL}</a></p>
+            <FounderCard {...FOUNDER_PROFILE} body={CONTACT.founderBody} className="contact-founder" />
           </div>
           <div className="right" ref={rightRef} style={minHeight ? { minHeight } : undefined}>
             {!submitted && (

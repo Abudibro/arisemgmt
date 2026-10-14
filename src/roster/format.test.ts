@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { cpm, fill, formatCpm, formatDecimal, formatMoney, formatMonth, formatPercent, formatPercentValue, formatViews, mailtoHref, plural } from './format.ts';
+import { cpm, fill, formatCpm, formatDecimal, formatMoney, formatMonth, formatPercent, formatPercentValue, formatShare, formatViews, mailtoHref, plural } from './format.ts';
 
 describe('formatViews', () => {
   it.each([
@@ -20,6 +20,9 @@ describe('other formats', () => {
     expect(formatPercent(0.944)).toBe('94%');
     expect(formatPercentValue(25.2)).toBe('25%');
     expect(formatPercentValue(37)).toBe('37%');
+    expect(formatShare(33.4)).toBe('33.4%');
+    expect(formatShare(0.2)).toBe('0.2%');
+    expect(formatShare(30)).toBe('30.0%');
   });
   it('money is USD with no decimals', () => {
     expect(formatMoney(7500)).toBe('$7,500');

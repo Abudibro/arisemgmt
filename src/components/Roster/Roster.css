@@ -755,6 +755,268 @@
   margin-top: 2rem;
 }
 
+/* ---------- audience, from YouTube Studio (a "data" surface, like the cards) ---------- */
+
+.studio-carousel {
+  margin-top: 2.4rem;
+}
+
+/* One creator per slide. Native scroll-snap, so swipe and trackpad just work. */
+.studio-track {
+  position: relative; /* slides' offsetLeft is measured from here */
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  gap: 1.2rem;
+  align-items: start;
+}
+
+.is-carousel .studio-track {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+
+.is-carousel .studio-track::-webkit-scrollbar {
+  display: none;
+}
+
+.studio-slide {
+  scroll-snap-align: start;
+  min-width: 0;
+}
+
+.carousel-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+/* Same shape as the site's pill toggle, for any number of creators. */
+.carousel-tabs {
+  display: inline-flex;
+  gap: 0.2rem;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: 999px;
+  padding: 0.3rem;
+}
+
+.carousel-tab {
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  color: var(--fg-soft);
+  white-space: nowrap;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.carousel-tab:hover:not(.active) {
+  color: var(--fg);
+}
+
+.carousel-tab.active {
+  background: var(--fg);
+  color: var(--on-fg);
+}
+
+.carousel-arrows {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.carousel-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border-radius: 999px;
+  border: 1px solid var(--fg);
+  background: transparent;
+  color: var(--fg);
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease, opacity 0.18s ease;
+}
+
+.carousel-arrow:hover:not(:disabled) {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.carousel-arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.carousel-arrow svg {
+  width: 18px;
+  height: 18px;
+}
+
+@media (max-width: 420px) {
+  .carousel-tab {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.86rem;
+  }
+}
+
+.studio-panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.studio-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.4rem 1.5rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.studio-period {
+  color: var(--fg-soft);
+  font-size: 0.9rem;
+}
+
+.studio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem clamp(2rem, 5vw, 4rem);
+  margin-top: 1.6rem;
+}
+
+@media (max-width: 720px) {
+  .studio-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.share-list h4 {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--fg-soft);
+  margin: 0 0 0.9rem;
+}
+
+.share-note {
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 500;
+}
+
+.share-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.share-list li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.3rem 1rem;
+  font-size: 0.95rem;
+}
+
+.share-value {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Part-of-whole bars: the track is 100%, the lime fill is the share. */
+.share-track {
+  grid-column: 1 / -1;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.share-bar {
+  display: block;
+  height: 100%;
+  width: var(--w);
+  min-width: 2px;
+  border-radius: 3px;
+  background: var(--accent);
+}
+
+.studio-shots {
+  margin-top: 1.8rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--line);
+}
+
+.studio-shots summary {
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--fg-soft);
+  text-underline-offset: 3px;
+  width: fit-content;
+}
+
+.studio-shots summary:hover {
+  text-decoration-color: var(--fg);
+}
+
+.studio-shots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1.2rem;
+  align-items: start;
+}
+
+.studio-shots-grid a {
+  display: block;
+  border-radius: 10px;
+}
+
+.studio-shots-grid img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+/* ---------- founder, inside the closing section ---------- */
+
+.next-step-grid.has-founder {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+}
+
+@media (max-width: 860px) {
+  .next-step-grid.has-founder {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* the card itself is styled in FounderCard.css */
+
 /* ---------- scroll reveal (same easing as the hero's .rise) ---------- */
 
 @media (prefers-reduced-motion: no-preference) {
@@ -845,6 +1107,34 @@
 
   .offer-from {
     display: none;
+  }
+
+  .studio-shots {
+    display: none;
+  }
+
+  /* print every creator, stacked */
+  .carousel-controls {
+    display: none;
+  }
+
+  .studio-track {
+    grid-auto-flow: row;
+    overflow: visible !important;
+  }
+
+  .studio-panel {
+    break-inside: avoid;
+  }
+
+  .share-bar,
+  .share-track {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .share-bar {
+    background: var(--fg);
   }
 
   .rise {

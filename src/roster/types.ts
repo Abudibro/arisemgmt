@@ -20,6 +20,47 @@ export interface CreatorContent {
   pastResults: ResultPair[];
   /** USD per video. null shows "On request". */
   prices: Record<FormatKey, number | null>;
+  /** Audience numbers copied from the creator's YouTube Studio. null hides the panel. */
+  studio: StudioSnapshot | null;
+}
+
+export interface Share {
+  label: string;
+  /** 0–100, as YouTube Studio shows it */
+  percent: number;
+}
+
+export interface Screenshot {
+  /** Path under /public. Crop out anything that identifies the channel. */
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
+export type ShareKey = 'gender' | 'age' | 'countries' | 'devices';
+
+export interface StudioSnapshot {
+  /** Where the numbers come from. Defaults to "YouTube Studio". */
+  source?: string;
+  /** e.g. "Last 28 days". Applies to every list unless `periods` overrides it. null = not stated. */
+  period: string | null;
+  /** Per-list override. null = the screenshot didn't say, so no period is shown. */
+  periods?: Partial<Record<ShareKey, string | null>>;
+  gender: Share[];
+  age: Share[];
+  countries: Share[];
+  /** By watch time */
+  devices: Share[];
+  screenshots: Screenshot[];
+}
+
+export interface Founder {
+  name: string;
+  role: string;
+  /** Square image under /public, shown in a circle */
+  photo: string;
+  body: string;
 }
 
 export interface Step {
@@ -49,6 +90,8 @@ export interface RosterContent {
   formats: FormatOffer[];
   steps: Step[];
   faq: { question: string; answer: string }[];
+  /** The person behind Arise, shown in the closing section. null hides it. */
+  founder: Founder | null;
   copy: RosterCopy;
 }
 
@@ -88,6 +131,20 @@ export interface RosterCopy {
     pastResultsLabel: string;
     /** {alias} */
     pricingLink: string;
+  };
+  studio: {
+    heading: string;
+    sub: string;
+    /** {source}, {period} */
+    periodLabel: string;
+    /** Header when the lists cover different periods */
+    sourceLabel: string;
+    charts: { gender: string; age: string; countries: string; devices: string };
+    devicesNote: string;
+    screenshotsToggle: string;
+    carouselTabsLabel: string;
+    carouselPrev: string;
+    carouselNext: string;
   };
   proof: { heading: string; statCaption: string; statNote: string };
   whatYouGet: { heading: string; note: string; /** {price} */ fromPrice: string };
@@ -132,6 +189,7 @@ export interface RosterCreator {
   audience: CreatorContent['audience'];
   pastResults: ResultPair[];
   prices: Record<FormatKey, number | null>;
+  studio: StudioSnapshot | null;
 }
 
 export interface RosterData {

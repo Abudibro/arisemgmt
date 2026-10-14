@@ -8,6 +8,7 @@ import RosterHero from './RosterHero.tsx';
 import SponsorStrip from './SponsorStrip.tsx';
 import WhyChannels from './WhyChannels.tsx';
 import RosterCards from './RosterCards.tsx';
+import StudioAudience from './StudioAudience.tsx';
 import Proof from './Proof.tsx';
 import WhatYouGet from './WhatYouGet.tsx';
 import HowItWorks from './HowItWorks.tsx';
@@ -41,12 +42,13 @@ export default function RosterPage({ data, content, isSample = false }: RosterPa
         </div>
         <WhyChannels copy={copy.why} />
         <RosterCards creators={data.creators} copy={copy.roster} />
+        <StudioAudience data={data} copy={copy.studio} platformLabel={copy.roster.platformLabel} />
         <Proof data={data} copy={copy.proof} />
         <WhatYouGet formats={content.formats} creators={data.creators} copy={copy.whatYouGet} />
         <HowItWorks steps={content.steps} copy={copy.howItWorks} />
         <Pricing creators={data.creators} formats={content.formats} copy={copy.pricing} platformLabel={copy.roster.platformLabel} />
         <Terms faq={content.faq} copy={copy.terms} />
-        <NextStep copy={copy.nextStep} />
+        <NextStep copy={copy.nextStep} founder={content.founder} />
       </main>
       <Footer />
       {import.meta.env.DEV && <DevTodoBanner items={listUnfilled(data)} isSample={isSample} />}
