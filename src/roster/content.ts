@@ -78,6 +78,7 @@ export const rosterContent: RosterContent = {
       audience: {
         ...emptyCreator().audience,
         topCountries: ['United States', 'India', 'Germany'],
+        ageBand: '25–54 (83%)', // from the creator's media kit (the age split below)
         avgViewDuration: '3:32', // from the creator's media kit
       },
       // Kept close to the creator's public media-kit rate ($1,900). Their kit

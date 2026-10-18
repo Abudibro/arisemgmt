@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-12T23:36:40Z",
-  "dataAsOf": "2026-10-12T23:36:41Z",
+  "generatedAt": "2026-10-18T21:41:28Z",
+  "dataAsOf": "2026-10-18T21:41:29Z",
   "window": "last 15 long-form videos (over 3 minutes, no livestreams)",
   "roster": {
     "brands": [
@@ -21,20 +21,20 @@
       "Superblocks",
       "TrueFoundry"
     ],
-    "combinedMedianViews": 157195,
-    "combinedUploadsPerMonth": 25.1,
-    "sponsoredViewsVsMedian": 0.96
+    "combinedMedianViews": 162633,
+    "combinedUploadsPerMonth": 25.3,
+    "sponsoredViewsVsMedian": 0.9
   },
   "creators": [
     {
       "id": "creator-a",
       "alias": "Creator A",
       "niche": null,
-      "subscriberCount": 135000,
-      "medianViews": 64901,
-      "meanViews": 99185,
+      "subscriberCount": 136000,
+      "medianViews": 65808,
+      "meanViews": 100138,
       "videosAnalysed": 15,
-      "uploadsPerMonth": 8.7,
+      "uploadsPerMonth": 9.0,
       "recentVideos": [
         {
           "month": "2026-10",
@@ -50,7 +50,7 @@
         },
         {
           "month": "2026-09",
-          "views": 52000,
+          "views": 54000,
           "durationMinutes": 20,
           "topic": null
         }
@@ -78,8 +78,7 @@
       "todo": [
         "niche",
         "recentVideos[].topic",
-        "audience.topCountries",
-        "audience.avgViewDuration",
+        "audience.*",
         "pastResults"
       ]
     },
@@ -87,27 +86,27 @@
       "id": "creator-b",
       "alias": "Creator B",
       "niche": null,
-      "subscriberCount": 170000,
-      "medianViews": 50227,
-      "meanViews": 65810,
+      "subscriberCount": 172000,
+      "medianViews": 51397,
+      "meanViews": 68817,
       "videosAnalysed": 15,
-      "uploadsPerMonth": 10.7,
+      "uploadsPerMonth": 11.0,
       "recentVideos": [
         {
           "month": "2026-10",
-          "views": 35000,
+          "views": 46000,
           "durationMinutes": 13,
           "topic": null
         },
         {
           "month": "2026-10",
-          "views": 17000,
+          "views": 19000,
           "durationMinutes": 14,
           "topic": null
         },
         {
           "month": "2026-10",
-          "views": 38000,
+          "views": 41000,
           "durationMinutes": 16,
           "topic": null
         }
@@ -122,41 +121,36 @@
       "audience": {
         "usUkPercent": 25.2,
         "topCountries": [],
-        "ageBand": "25–54 (83%)",
+        "ageBand": null,
         "avgViewDuration": null
       },
-      "pastResults": [
-        {
-          "label": "Sponsorship click-through rate",
-          "value": "7–10%"
-        }
-      ],
+      "pastResults": [],
       "todo": [
         "niche",
         "recentVideos[].topic",
-        "audience.topCountries",
-        "audience.avgViewDuration"
+        "audience.*",
+        "pastResults"
       ]
     },
     {
       "id": "creator-c",
       "alias": "Creator C",
       "niche": null,
-      "subscriberCount": 476000,
-      "medianViews": 42067,
-      "meanViews": 43275,
+      "subscriberCount": 483000,
+      "medianViews": 45428,
+      "meanViews": 56456,
       "videosAnalysed": 15,
-      "uploadsPerMonth": 5.7,
+      "uploadsPerMonth": 5.3,
       "recentVideos": [
         {
           "month": "2026-10",
-          "views": 3500,
+          "views": 74000,
           "durationMinutes": 22,
           "topic": null
         },
         {
           "month": "2026-10",
-          "views": 82000,
+          "views": 210000,
           "durationMinutes": 54,
           "topic": null
         },
@@ -183,7 +177,7 @@
         "privacy compliance",
         "seo and ai visibility tool"
       ],
-      "sponsoredViewsVsMedian": 0.96,
+      "sponsoredViewsVsMedian": 0.92,
       "audience": {
         "usUkPercent": 13.6,
         "topCountries": [],
@@ -194,8 +188,7 @@
       "todo": [
         "niche",
         "recentVideos[].topic",
-        "audience.topCountries",
-        "audience.avgViewDuration",
+        "audience.*",
         "pastResults"
       ]
     }
