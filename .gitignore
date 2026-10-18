@@ -25,3 +25,6 @@ dist-ssr
 
 # TypeScript build cache
 *.tsbuildinfo
+
+# Internal lead-gen export (real channel names). Never commit; the site uses src/roster/deck-export.public.json
+roster/roster.json
