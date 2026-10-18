@@ -4,6 +4,7 @@
 .waffle-host {
   position: relative;
   overflow: hidden;
+  overflow: clip; /* clips like hidden but isn't a scroll container, so sticky children still stick */
   isolation: isolate;
 }
 

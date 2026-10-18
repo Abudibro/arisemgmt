@@ -1,5 +1,248 @@
-/* ---------- how we work (real sequence -> earned numbers) ---------- */
+/* ---------- how we work: pinned heading + scroll-filled timeline ---------- */
+
+.how-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: start;
+}
+
+/* Heading and toggle stay in view while the steps scroll past. */
+.how-side {
+  position: sticky;
+  top: 6rem;
+}
 
 .how-toggle {
   margin-top: 1.8rem;
+}
+
+/* ---------- the rail ---------- */
+
+.timeline {
+  --node: 44px;
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.1rem;
+}
+
+/* Grey track, then the lime fill on top of it, both through the node centres. */
+.timeline::before,
+.timeline::after {
+  content: "";
+  position: absolute;
+  left: calc(var(--node) / 2 - 1px);
+  top: calc(var(--node) / 2);
+  bottom: calc(var(--node) / 2);
+  width: 2px;
+  border-radius: 2px;
+}
+
+.timeline::before {
+  background: var(--line);
+}
+
+.timeline::after {
+  background: linear-gradient(to bottom, var(--accent), rgba(212, 255, 58, 0.6));
+  box-shadow: 0 0 12px rgba(212, 255, 58, 0.45);
+  transform-origin: top;
+  transform: scaleY(var(--fill, 0));
+}
+
+.tl-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--node) minmax(0, 1fr);
+  gap: clamp(0.9rem, 2.5vw, 1.6rem);
+  align-items: start;
+}
+
+.tl-node {
+  position: relative;
+  z-index: 1;
+  width: var(--node);
+  height: var(--node);
+  margin-top: 1.25rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  color: var(--fg-soft);
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  font-variant-numeric: tabular-nums;
+  transition: background 0.4s, color 0.4s, border-color 0.4s, box-shadow 0.4s;
+}
+
+.tl-step.is-reached .tl-node {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+  box-shadow: 0 0 0 6px rgba(212, 255, 58, 0.12), 0 0 22px rgba(212, 255, 58, 0.35);
+}
+
+/* ---------- step cards ---------- */
+
+.tl-card {
+  position: relative;
+  padding: 1.4rem 1.5rem 1.5rem;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  isolation: isolate;
+  transition: border-color 0.4s, transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* Lime light that follows the cursor (position set in HowWeWork.tsx). */
+.tl-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(280px circle at var(--mx, 50%) var(--my, 0%), rgba(212, 255, 58, 0.09), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+
+.tl-card:hover {
+  transform: translateX(4px);
+}
+
+.tl-card:hover::before {
+  opacity: 1;
+}
+
+.tl-step.is-reached .tl-card {
+  border-color: #34400f;
+}
+
+.tl-head {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.tl-icon {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: var(--accent-tint);
+  color: var(--accent);
+  border: 1px solid #2a3410;
+}
+
+.tl-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.tl-card h3 {
+  font-size: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.tl-card p {
+  margin-top: 0.8rem;
+  color: var(--fg-soft);
+  max-width: 58ch;
+}
+
+.tl-chips {
+  list-style: none;
+  margin: 1.1rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.tl-chips li {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--fg-soft);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.2rem 0.7rem;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* ---------- closing prompt ---------- */
+
+.how-cta {
+  margin-top: 1.6rem;
+  margin-left: calc(44px + clamp(0.9rem, 2.5vw, 1.6rem));
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+  padding: 1.2rem 1.5rem;
+  border: 1px dashed #34400f;
+  border-radius: 16px;
+  background: var(--accent-tint);
+}
+
+.how-cta p {
+  font-weight: 600;
+}
+
+/* ---------- narrow screens: stack, rail stays ---------- */
+
+@media (max-width: 900px) {
+  .how-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .how-side {
+    position: static;
+  }
+}
+
+@media (max-width: 560px) {
+  .timeline {
+    --node: 34px;
+  }
+
+  .tl-node {
+    font-size: 0.8rem;
+  }
+
+  .tl-card {
+    padding: 1.2rem;
+  }
+
+  .how-cta {
+    margin-left: 0;
+  }
+}
+
+/* ---------- motion ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Steps slide in on load and whenever the brand/creator toggle changes (the list is re-keyed). */
+  .tl-step {
+    animation: tl-in 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(var(--i) * 80ms);
+  }
+
+  .timeline::after {
+    transition: transform 0.15s linear;
+  }
+}
+
+@keyframes tl-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
 }
