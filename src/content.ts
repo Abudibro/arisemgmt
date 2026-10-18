@@ -38,7 +38,7 @@ export const HOW_WE_WORK = {
     influencer: { text: 'Step one is a short call about your channel.', button: 'Book a call' },
   },
   toggle: {
-    brandLabel: 'For SaaS Brands',
+    brandLabel: 'For Brands',
     influencerLabel: 'For Creators',
   },
   steps: {
@@ -187,7 +187,7 @@ export const CONTACT = {
   body: "If it's a fit, you'll hear back within a day. If it's not, we'll tell you that too — and point you somewhere better.",
   directPrefix: 'Rather just email?',
   toggle: {
-    brandLabel: "I'm a SaaS brand",
+    brandLabel: "I'm a brand",
     influencerLabel: "I'm a creator",
   },
   success: {
