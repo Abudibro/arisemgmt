@@ -12,7 +12,6 @@ import StudioAudience from './StudioAudience.tsx';
 import Proof from './Proof.tsx';
 import WhatYouGet from './WhatYouGet.tsx';
 import HowItWorks from './HowItWorks.tsx';
-import Pricing from './Pricing.tsx';
 import Terms from './Terms.tsx';
 import NextStep from './NextStep.tsx';
 import DevTodoBanner from './DevTodoBanner.tsx';
@@ -26,7 +25,7 @@ interface RosterPageProps {
   isSample?: boolean;
 }
 
-/** The unlisted /roster page: creators, what a brand gets, and prices. */
+/** The unlisted /roster page: creators and what a brand gets. Prices are given privately, not on the page. */
 export default function RosterPage({ data, content, isSample = false }: RosterPageProps) {
   const { copy } = content;
   useReveal();
@@ -44,9 +43,8 @@ export default function RosterPage({ data, content, isSample = false }: RosterPa
         <RosterCards creators={data.creators} copy={copy.roster} />
         <StudioAudience data={data} copy={copy.studio} platformLabel={copy.roster.platformLabel} />
         <Proof data={data} copy={copy.proof} />
-        <WhatYouGet formats={content.formats} creators={data.creators} copy={copy.whatYouGet} />
+        <WhatYouGet formats={content.formats} copy={copy.whatYouGet} />
         <HowItWorks steps={content.steps} copy={copy.howItWorks} />
-        <Pricing creators={data.creators} formats={content.formats} copy={copy.pricing} platformLabel={copy.roster.platformLabel} />
         <Terms faq={content.faq} copy={copy.terms} />
         <NextStep copy={copy.nextStep} founder={content.founder} />
       </main>

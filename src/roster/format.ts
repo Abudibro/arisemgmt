@@ -27,13 +27,6 @@ export function formatShare(percent: number): string {
   return `${percent.toFixed(1)}%`;
 }
 
-const usd = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0, minimumFractionDigits: 0 });
-
-/** 7500 → "$7,500" */
-export function formatMoney(amount: number): string {
-  return usd.format(amount);
-}
-
 /** "2026-09" (or any ISO date starting that way) → "Sep 2026" */
 export function formatMonth(isoMonth: string): string {
   const [year, month] = isoMonth.split('-');
@@ -44,18 +37,6 @@ export function formatMonth(isoMonth: string): string {
 /** 4.3 → "4.3", 9 → "9" */
 export function formatDecimal(n: number): string {
   return trimZero(Math.round(n * 10) / 10);
-}
-
-/** Cost per 1,000 views, rounded to the nearest dollar. Null when it can't be computed. */
-export function cpm(price: number, medianViews: number): number | null {
-  if (!(medianViews > 0) || !(price >= 0)) return null;
-  return Math.round((price / medianViews) * 1000);
-}
-
-/** 3500 at 63203 median views → "≈ $55 per 1,000 views" */
-export function formatCpm(price: number, medianViews: number): string | null {
-  const value = cpm(price, medianViews);
-  return value === null ? null : `≈ ${formatMoney(value)} per 1,000 views`;
 }
 
 /** Replaces {name} placeholders in a copy string. */

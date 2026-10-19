@@ -1,32 +1,22 @@
 import type { CSSProperties } from 'react';
-import { fill, formatMoney } from '../../roster/format.ts';
-import type { FormatOffer, RosterCopy, RosterCreator } from '../../roster/types.ts';
+import type { FormatOffer, RosterCopy } from '../../roster/types.ts';
 
 interface WhatYouGetProps {
   formats: FormatOffer[];
-  creators: RosterCreator[];
   copy: RosterCopy['whatYouGet'];
 }
 
-export default function WhatYouGet({ formats, creators, copy }: WhatYouGetProps) {
+export default function WhatYouGet({ formats, copy }: WhatYouGetProps) {
   if (formats.length === 0) return null;
 
-  // Lowest real price for each format, for the "From $X" link. Hidden if every price is "On request".
-  const fromPrice = (format: FormatOffer) => {
-    const prices = creators.map((c) => c.prices[format.key]).filter((p): p is number => p !== null);
-    return prices.length > 0 ? Math.min(...prices) : null;
-  };
-
   return (
-    <section className="what-you-get">
+    <section id="what-you-get" className="what-you-get">
       <div className="wrap">
         <div className="sec-head reveal">
           <h2>{copy.heading}</h2>
         </div>
         <div className="offer-grid">
-          {formats.map((format, i) => {
-            const from = fromPrice(format);
-            return (
+          {formats.map((format, i) => (
               <div className="offer reveal" key={format.key} style={{ '--i': i } as CSSProperties}>
                 <div className="offer-head">
                   <h3>{format.name}</h3>
@@ -43,12 +33,8 @@ export default function WhatYouGet({ formats, creators, copy }: WhatYouGetProps)
                     </li>
                   ))}
                 </ul>
-                {from !== null && (
-                  <a className="offer-from" href="#pricing">{fill(copy.fromPrice, { price: formatMoney(from) })}</a>
-                )}
               </div>
-            );
-          })}
+          ))}
         </div>
         {copy.note && <p className="roster-note reveal">{copy.note}</p>}
       </div>

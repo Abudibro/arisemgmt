@@ -1,6 +1,6 @@
 # /roster data
 
-The unlisted roster and pricing page (`/roster`) is built from two files in this folder.
+The unlisted roster page (`/roster`) is built from two files in this folder.
 
 ## 1. `deck-export.public.json` — replace the sample
 
@@ -24,7 +24,7 @@ The validation lives in `schema.ts`.
 
 ## 2. `content.ts` — fill in by hand
 
-Niche, audience, recent video topics, past results, prices, case notes, and every line of copy.
+Niche, audience, recent video topics, past results, case notes, and every line of copy.
 Leave anything unknown as `null` or `[]`. It won't render in production. Values here win over the
 JSON when they're filled in.
 

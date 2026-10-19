@@ -31,13 +31,11 @@ describe('RosterPage with nothing filled in', () => {
     expect(html).not.toContain('case-notes');
   });
 
-  it('shows computed stats, prices and CPM', () => {
+  it('shows computed stats and no prices', () => {
     expect(plain).toContain('views per video across the roster 150k');
-    expect(plain).toContain('$7,500');
-    expect(plain).toContain('≈ $119 per 1,000 views');
     expect(plain).toContain('Updated Oct 2026');
-    expect(html).toContain('id="pricing-creator-a"');
-    expect(html).toContain('href="#pricing-creator-a"');
+    expect(plain).not.toMatch(/\$\d/);
+    expect(html).not.toContain('pricing');
   });
 
   it('swaps the nav CTA for "Email us" and hides "How we work"', () => {
@@ -156,13 +154,6 @@ describe('RosterPage hiding rules', () => {
     const plain = text(render(exp));
     expect(plain).not.toContain('get 79%');
     expect(plain).toContain('Sponsored videos get 85% of this channel’s usual views.');
-  });
-
-  it('shows "On request" for a null price, with no CPM', () => {
-    const content = makeContent();
-    content.creators['creator-c'].prices = { integration: null, dedicated: 7500 };
-    const plain = text(render(makeExport(), content));
-    expect(plain).toContain('On request');
   });
 
   it('renders filled fields', () => {

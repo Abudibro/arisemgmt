@@ -42,7 +42,6 @@ const emptyCreator = (): CreatorContent => ({
   audience: { usUkPercent: null, topCountries: [], ageBand: null, avgViewDuration: null },
   recentVideoTopics: [null, null, null],
   pastResults: [],
-  prices: { integration: 3500, dedicated: 7500 },
   studio: null,
 });
 

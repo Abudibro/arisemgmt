@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { cpm, fill, formatCpm, formatDecimal, formatMoney, formatMonth, formatPercent, formatPercentValue, formatShare, formatViews, mailtoHref, plural } from './format.ts';
+import { fill, formatDecimal, formatMonth, formatPercent, formatPercentValue, formatShare, formatViews, mailtoHref, plural } from './format.ts';
 
 describe('formatViews', () => {
   it.each([
@@ -24,11 +24,6 @@ describe('other formats', () => {
     expect(formatShare(0.2)).toBe('0.2%');
     expect(formatShare(30)).toBe('30.0%');
   });
-  it('money is USD with no decimals', () => {
-    expect(formatMoney(7500)).toBe('$7,500');
-    expect(formatMoney(3500)).toBe('$3,500');
-    expect(formatMoney(119.6)).toBe('$120');
-  });
   it('month', () => {
     expect(formatMonth('2026-09')).toBe('Sep 2026');
     expect(formatMonth('2026-10-12T18:00:00Z')).toBe('Oct 2026');
@@ -48,20 +43,5 @@ describe('other formats', () => {
     expect(mailtoHref('a@b.co', 'Sponsorship — A / B', 'Hi\nthere')).toBe(
       'mailto:a@b.co?subject=Sponsorship%20%E2%80%94%20A%20%2F%20B&body=Hi%0Athere',
     );
-  });
-});
-
-describe('CPM', () => {
-  it('is price ÷ median views × 1000, rounded to the dollar', () => {
-    expect(cpm(7500, 63203)).toBe(119);
-    expect(cpm(3500, 63203)).toBe(55);
-    expect(cpm(3500, 53030)).toBe(66);
-  });
-  it('formats as "≈ $X per 1,000 views"', () => {
-    expect(formatCpm(7500, 63203)).toBe('≈ $119 per 1,000 views');
-  });
-  it('returns null when median views are zero', () => {
-    expect(cpm(3500, 0)).toBeNull();
-    expect(formatCpm(3500, 0)).toBeNull();
   });
 });

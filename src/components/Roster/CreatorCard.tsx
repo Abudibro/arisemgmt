@@ -109,8 +109,6 @@ export default function CreatorCard({ creator: c, copy, index = 0 }: CreatorCard
           </dl>
         </div>
       )}
-
-      <a className="card-link" href={`#pricing-${c.id}`}>{fill(copy.pricingLink, { alias: c.alias })}</a>
     </article>
   );
 }

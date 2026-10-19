@@ -18,8 +18,6 @@ export interface CreatorContent {
   /** One per recentVideos entry in the export, same order. null = use the export's topic (or hide). */
   recentVideoTopics: (string | null)[];
   pastResults: ResultPair[];
-  /** USD per video. null shows "On request". */
-  prices: Record<FormatKey, number | null>;
   /** Audience numbers copied from the creator's YouTube Studio. null hides the panel. */
   studio: StudioSnapshot | null;
 }
@@ -129,8 +127,6 @@ export interface RosterCopy {
     /** {x} → "97%" */
     sponsoredViewsLine: string;
     pastResultsLabel: string;
-    /** {alias} */
-    pricingLink: string;
   };
   studio: {
     heading: string;
@@ -147,17 +143,8 @@ export interface RosterCopy {
     carouselNext: string;
   };
   proof: { heading: string; statCaption: string; statNote: string };
-  whatYouGet: { heading: string; note: string; /** {price} */ fromPrice: string };
+  whatYouGet: { heading: string; note: string };
   howItWorks: { heading: string };
-  pricing: {
-    heading: string;
-    sub: string;
-    creatorColumn: string;
-    onRequest: string;
-    /** {views} */
-    medianViews: string;
-    note: string;
-  };
   terms: { heading: string };
   nextStep: {
     heading: string;
@@ -188,7 +175,6 @@ export interface RosterCreator {
   sponsoredViewsVsMedian: number | null;
   audience: CreatorContent['audience'];
   pastResults: ResultPair[];
-  prices: Record<FormatKey, number | null>;
   studio: StudioSnapshot | null;
 }
 

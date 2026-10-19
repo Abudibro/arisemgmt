@@ -11,10 +11,6 @@
 import { FOUNDER_PROFILE } from '../content.ts';
 import type { CreatorContent, RosterContent } from './types.ts';
 
-// Fallback prices for a creator without their own `prices` below. Each current
-// creator sets theirs: roughly the same cost per 1,000 views, adjusted for audience.
-const DEFAULT_PRICES = { integration: 3500, dedicated: 7500 };
-
 const emptyCreator = (): CreatorContent => ({
   niche: null, // e.g. "Claude Code and full-stack AI builds"
   audience: {
@@ -25,7 +21,6 @@ const emptyCreator = (): CreatorContent => ({
   },
   recentVideoTopics: [null, null, null], // same order as recentVideos in the export
   pastResults: [], // e.g. [{ label: "Dedicated video, AI infra brand", value: "71k views" }]
-  prices: { ...DEFAULT_PRICES },
   studio: null, // YouTube Studio audience numbers; see creator-a for the shape
 });
 
@@ -34,7 +29,6 @@ export const rosterContent: RosterContent = {
     'creator-a': {
       ...emptyCreator(),
       audience: { ...emptyCreator().audience, topCountries: ['United States', 'India', 'Germany'] },
-      prices: { integration: 4000, dedicated: 8500 },
       // Copied from YouTube Studio > Analytics > Audience, last 28 days.
       studio: {
         period: 'Last 28 days',
@@ -81,9 +75,6 @@ export const rosterContent: RosterContent = {
         ageBand: '25–54 (83%)', // from the creator's media kit (the age split below)
         avgViewDuration: '3:32', // from the creator's media kit
       },
-      // Kept close to the creator's public media-kit rate ($1,900). Their kit
-      // doesn't offer dedicated videos, so that shows "On request".
-      prices: { integration: 2500, dedicated: null },
       // From the creator's own media kit, which doesn't state a source or period.
       // Replace with YouTube Studio numbers + screenshots when you have them.
       studio: {
@@ -112,7 +103,6 @@ export const rosterContent: RosterContent = {
     'creator-c': {
       ...emptyCreator(),
       audience: { ...emptyCreator().audience, topCountries: ['India', 'United States', 'United Kingdom'] },
-      prices: { integration: 2500, dedicated: 5500 },
       studio: {
         period: 'Last 28 days',
         // TODO: Abdurahman to confirm the date range of the geography table
@@ -268,17 +258,17 @@ export const rosterContent: RosterContent = {
     nav: { cta: 'Email us' },
 
     hero: {
-      tag: 'Creator roster · Pricing',
+      tag: 'Creator roster',
       headingPrefix: 'YouTube creators your buyers ',
       headingHighlight: 'already watch.',
-      lede: 'Developers learning to build with AI watch these channels every week. Here are three from our roster, with everything you need to decide: who they are, what you get, and what it costs.',
+      lede: 'Developers learning to build with AI watch these channels every week. Here are three from our roster, with everything you need to decide: who they are, who watches, and what you get.',
       stats: {
         combinedMedianViews: 'views per video across the roster',
         combinedUploadsPerMonth: 'long-form videos a month',
         usUkPercent: 'US/UK audience',
       },
       primaryCta: 'See the creators',
-      secondaryCta: 'Jump to pricing',
+      secondaryCta: 'See what you get',
       footnote: "Based on each creator's last 15 long-form videos. Updated {dataAsOf}.",
     },
 
@@ -332,7 +322,6 @@ export const rosterContent: RosterContent = {
       },
       sponsoredViewsLine: 'Sponsored videos get {x} of this channel’s usual views.',
       pastResultsLabel: 'Past results',
-      pricingLink: 'See pricing for {alias} →',
     },
 
     studio: {
@@ -358,19 +347,9 @@ export const rosterContent: RosterContent = {
     whatYouGet: {
       heading: 'What you get.',
       note: 'Want to reuse the video in your own ads? Usage rights are priced separately. Ask and we’ll quote.',
-      fromPrice: 'From {price} →',
     },
 
     howItWorks: { heading: 'How it works.' },
-
-    pricing: {
-      heading: 'Pricing.',
-      sub: 'Per video, in USD. Half when the brief is agreed, half when the video goes live.',
-      creatorColumn: 'Creator',
-      onRequest: 'On request',
-      medianViews: '{views} median views',
-      note: 'Want more than one video, or more than one creator? We’ll put together a combined price.',
-    },
 
     terms: { heading: 'The details.' },
 

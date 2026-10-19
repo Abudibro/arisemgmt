@@ -390,19 +390,6 @@
   font-size: 0.95rem;
 }
 
-.card-link {
-  margin-top: auto;
-  align-self: flex-start;
-  font-weight: 600;
-  text-decoration: underline;
-  text-decoration-color: var(--fg-soft);
-  text-underline-offset: 3px;
-}
-
-.card-link:hover {
-  text-decoration-color: var(--fg);
-}
-
 /* ---------- proof: heading left, the big number right ---------- */
 
 .proof-grid {
@@ -524,20 +511,6 @@
   color: var(--accent);
 }
 
-.offer-from {
-  margin-top: auto;
-  padding-top: 1.6rem;
-  align-self: flex-start;
-  font-weight: 600;
-  text-decoration: underline;
-  text-decoration-color: var(--fg-soft);
-  text-underline-offset: 3px;
-}
-
-.offer-from:hover {
-  text-decoration-color: var(--fg);
-}
-
 @media (max-width: 780px) {
   .offer-grid {
     grid-template-columns: 1fr;
@@ -551,43 +524,7 @@
   max-width: 60ch;
 }
 
-/* ---------- pricing (the other bordered "data" surface) ---------- */
-
-.price-table {
-  width: 100%;
-  margin-top: 2.4rem;
-  border-collapse: separate;
-  border-spacing: 0;
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  overflow: hidden;
-}
-
-.price-table th,
-.price-table td {
-  text-align: left;
-  vertical-align: top;
-  padding: 1.3rem clamp(1rem, 2.5vw, 1.75rem);
-}
-
-.price-table thead th {
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--fg-soft);
-  padding-block: 1rem;
-}
-
-.price-table tbody tr > * {
-  border-top: 1px solid var(--line);
-}
-
-.price-table tbody th {
-  font-weight: 400;
-  width: 40%;
-}
+/* ---------- creator name with YouTube mark (studio audience headings) ---------- */
 
 .price-alias {
   display: flex;
@@ -597,93 +534,6 @@
   font-weight: 700;
   font-size: 1.3rem;
   letter-spacing: -0.02em;
-}
-
-.price-niche,
-.price-views {
-  display: block;
-  margin-top: 0.2rem;
-  color: var(--fg-soft);
-  font-size: 0.92rem;
-}
-
-.price {
-  display: block;
-  font-family: "Bricolage Grotesque", sans-serif;
-  font-weight: 700;
-  font-size: clamp(1.6rem, 1.4rem + 0.8vw, 2.1rem);
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  font-variant-numeric: tabular-nums;
-}
-
-.price-cpm {
-  display: block;
-  margin-top: 0.3rem;
-  color: var(--fg-soft);
-  font-size: 0.9rem;
-}
-
-.price-on-request {
-  display: block;
-  font-weight: 600;
-  font-size: 1.1rem;
-  color: var(--fg-soft);
-}
-
-/* Mobile: the table becomes one stacked block per creator. */
-@media (max-width: 720px) {
-  .price-table,
-  .price-table tbody,
-  .price-table tr,
-  .price-table th,
-  .price-table td {
-    display: block;
-    width: auto;
-  }
-
-  .price-table {
-    background: none;
-    border: 0;
-    border-radius: 0;
-    overflow: visible;
-  }
-
-  .price-table thead {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
-  }
-
-  .price-table tbody tr {
-    background: var(--panel);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    margin-bottom: 1rem;
-  }
-
-  .price-table tbody tr > * {
-    border-top: 0;
-    padding: 1.1rem 1.25rem;
-  }
-
-  .price-table tbody td {
-    border-top: 1px solid var(--line);
-  }
-
-  .price-table td::before {
-    content: attr(data-label);
-    display: block;
-    margin-bottom: 0.35rem;
-    font-size: 0.82rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--fg-soft);
-  }
 }
 
 /* ---------- the details: heading stays put on the left, Q&A scrolls on the right ---------- */
@@ -1090,8 +940,7 @@
   .nav,
   .waffle-grid,
   .dev-todo,
-  .roster-hero .cta-row,
-  .card-link {
+  .roster-hero .cta-row {
     display: none !important;
   }
 
@@ -1103,10 +952,6 @@
 
   .terms-head {
     position: static;
-  }
-
-  .offer-from {
-    display: none;
   }
 
   .studio-shots {
@@ -1169,7 +1014,6 @@
   }
 
   .creator-card,
-  .price-table tr,
   .offer,
   .faq-item,
   .proof-stat,

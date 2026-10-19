@@ -30,7 +30,7 @@ export default function RosterHero({ data, copy }: RosterHeroProps) {
         </dl>
         <div className="cta-row rise d4">
           <a href="#roster" className="btn btn-primary btn-lg">{copy.primaryCta}</a>
-          <a href="#pricing" className="btn btn-ghost btn-lg">{copy.secondaryCta}</a>
+          <a href="#what-you-get" className="btn btn-ghost btn-lg">{copy.secondaryCta}</a>
         </div>
         <p className="roster-footnote rise d4">{fill(copy.footnote, { dataAsOf: formatMonth(data.dataAsOf) })}</p>
       </div>

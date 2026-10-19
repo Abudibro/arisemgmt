@@ -45,7 +45,6 @@ export function mergeRoster(data: DeckExport, content: RosterContent): RosterDat
         avgViewDuration: pickText(manual.audience.avgViewDuration, c.audience.avgViewDuration),
       },
       pastResults: pickList(manual.pastResults, c.pastResults).filter((r) => filledText(r.label) && filledText(r.value)),
-      prices: manual.prices,
       studio: manual.studio,
     };
   });
@@ -101,8 +100,6 @@ export function listUnfilled(data: RosterData): string[] {
     if (missingTopics.length > 0) add(`recentVideoTopics (video ${missingTopics.join(', ')})`);
     if (c.pastResults.length === 0) add('pastResults');
     if (c.sponsoredViewsVsMedian === null) add('sponsoredViewsVsMedian (export)');
-    if (c.prices.integration === null) add('prices.integration (shows "On request")');
-    if (c.prices.dedicated === null) add('prices.dedicated (shows "On request")');
     if (c.studio === null) add('studio (YouTube Studio audience panel)');
   }
   return missing;

@@ -78,12 +78,9 @@ describe('show/hide rules', () => {
 
   it('lists what is unfilled', () => {
     const content = makeContent();
-    content.creators['creator-b'].prices.dedicated = null;
     const missing = listUnfilled(mergeRoster(makeExport(), content));
     expect(missing).toContain('Creator A: niche');
     expect(missing).toContain('Creator A: recentVideoTopics (video 1, 2, 3)');
     expect(missing).toContain('Roster: caseNotes');
-    expect(missing).toContain('Creator B: prices.dedicated (shows "On request")');
-    expect(missing).not.toContain('Creator A: prices.integration (shows "On request")');
   });
 });
