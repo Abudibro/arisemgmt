@@ -13,6 +13,7 @@ import type { CreatorContent, RosterContent } from './types.ts';
 
 const emptyCreator = (): CreatorContent => ({
   niche: null, // e.g. "Claude Code and full-stack AI builds"
+  summary: null, // a few sentences on what the channel covers; the export now fills this
   audience: {
     usUkPercent: null, // 0–100, e.g. 25.2 for 25.2% (same scale as the export)
     topCountries: [], // e.g. ["US", "UK", "India"]
@@ -28,7 +29,16 @@ export const rosterContent: RosterContent = {
   creators: {
     'creator-a': {
       ...emptyCreator(),
-      audience: { ...emptyCreator().audience, topCountries: ['United States', 'India', 'Germany'] },
+      // TODO: Abdurahman to check. Shortened from the export's summary.
+      summary: 'Breaks down new AI models and agent tools as they launch, with hands-on demos. Watched by developers deciding what to build with.',
+      // US/UK share and age band came from the export until 19 Oct 2026; the
+      // export no longer carries audience numbers, so they live here now.
+      audience: {
+        ...emptyCreator().audience,
+        usUkPercent: 37.0,
+        topCountries: ['United States', 'India', 'Germany'],
+        ageBand: '25–54 (78.8%)',
+      },
       // Copied from YouTube Studio > Analytics > Audience, last 28 days.
       studio: {
         period: 'Last 28 days',
@@ -69,8 +79,10 @@ export const rosterContent: RosterContent = {
     },
     'creator-b': {
       ...emptyCreator(),
+      summary: 'Quick, practical videos on AI coding: setup tips, new tools worth installing, and which AI model to use. For developers who code with AI every day.',
       audience: {
         ...emptyCreator().audience,
+        usUkPercent: 25.2,
         topCountries: ['United States', 'India', 'Germany'],
         ageBand: '25–54 (83%)', // from the creator's media kit (the age split below)
         avgViewDuration: '3:32', // from the creator's media kit
@@ -102,7 +114,13 @@ export const rosterContent: RosterContent = {
     },
     'creator-c': {
       ...emptyCreator(),
-      audience: { ...emptyCreator().audience, topCountries: ['India', 'United States', 'United Kingdom'] },
+      summary: 'Long build-along tutorials that take a real app from idea to launch using AI coding tools. Products get used inside the build, not read out as an ad.',
+      audience: {
+        ...emptyCreator().audience,
+        usUkPercent: 13.6,
+        topCountries: ['India', 'United States', 'United Kingdom'],
+        ageBand: '25–54 (81.1%)',
+      },
       studio: {
         period: 'Last 28 days',
         // TODO: Abdurahman to confirm the date range of the geography table
@@ -138,32 +156,6 @@ export const rosterContent: RosterContent = {
         ],
       },
     },
-  },
-
-  // Roster-level proof, one short line each.
-  // e.g. "AI infrastructure brand · dedicated video · 71k views"
-  // From Creator B's media kit. Brands are replaced by their category and views
-  // rounded, so the videos can't be looked up. Kit's "+13% signups" (Cline) left
-  // out: the kit doesn't say how it was measured.
-  caseNotes: [
-    'Developer terminal · natural drop-in · 191k views · 7.3% CTR',
-    'Developer infrastructure · natural drop-in · 85k views · 10.3% CTR',
-    'AI coding agent · natural drop-in · 91k views · 7.9% CTR',
-    'Automation platform · 60-second integration · 53k views · 7% CTR',
-    'AI model provider · 60-second integration · 40k views · 8% CTR',
-  ],
-
-  // Brand name (exactly as in the export) → a square, single-colour mark under
-  // /public. The page tints it grey and shows the name next to it. Brands
-  // without an entry show the name only. Marks below are from Simple Icons (CC0).
-  sponsorLogos: {
-    Databricks: '/logos/databricks.svg',
-    DataCamp: '/logos/datacamp.svg',
-    Dell: '/logos/dell.svg',
-    NVIDIA: '/logos/nvidia.svg',
-    Render: '/logos/render.svg',
-    Sanity: '/logos/sanity.svg',
-    Semrush: '/logos/semrush.svg',
   },
 
   formats: [
@@ -261,71 +253,22 @@ export const rosterContent: RosterContent = {
       tag: 'Creator roster',
       headingPrefix: 'YouTube creators your buyers ',
       headingHighlight: 'already watch.',
-      lede: 'Developers learning to build with AI watch these channels every week. Here are three from our roster, with everything you need to decide: who they are, who watches, and what you get.',
-      stats: {
-        combinedMedianViews: 'views per video across the roster',
-        combinedUploadsPerMonth: 'long-form videos a month',
-        usUkPercent: 'US/UK audience',
-      },
-      primaryCta: 'See the creators',
-      secondaryCta: 'See what you get',
+      lede: 'Three channels developers watch every week to learn to build with AI.',
       footnote: "Based on each creator's last 15 long-form videos. Updated {dataAsOf}.",
-    },
-
-    sponsors: {
-      label: 'Our creators have run sponsorships with',
-      pause: 'Pause the logo rail',
-      play: 'Play the logo rail',
-    },
-
-    why: {
-      heading: 'Why these channels.',
-      items: [
-        {
-          icon: 'tools',
-          title: 'They buy tools.',
-          body: 'The audience is developers and technical founders choosing what to build with. They watch to decide what to use.',
-        },
-        {
-          icon: 'search',
-          title: 'Videos keep working.',
-          body: 'YouTube videos are found through search for months after they go live. A sponsorship isn’t gone in a day like a social post.',
-        },
-        {
-          icon: 'demo',
-          title: 'It’s shown, not read out.',
-          body: 'The creator uses your product in the video, in front of the people who’d actually use it.',
-        },
-      ],
     },
 
     roster: {
       heading: 'The roster.',
       sub: 'Three from our roster. We work with more, and can suggest others for your product. Names on request: we keep creators anonymous until you’re ready to go ahead.',
-      medianViewsLabel: 'median views, last {n} videos',
+      medianViewsLabel: 'views on a typical video',
       subscribersLabel: 'subscribers',
-      uploadsLabel: 'videos a month',
-      audienceLabels: {
-        usUkPercent: 'US/UK audience',
-        topCountries: 'Top countries',
-        ageBand: 'Age',
-        avgViewDuration: 'Average view duration',
-      },
-      recentVideosLabel: 'Recent videos',
+      uploadsLabel: 'new videos a month',
+      usUkLabel: 'of viewers in the US or UK',
       platformLabel: 'YouTube channel',
-      viewsSuffix: 'views',
-      minutesSuffix: 'min',
-      sponsorshipLine: '{count} sponsored videos in the last {n}',
-      formatCounts: {
-        integration: ['integration', 'integrations'],
-        dedicated: ['dedicated video', 'dedicated videos'],
-      },
-      sponsoredViewsLine: 'Sponsored videos get {x} of this channel’s usual views.',
-      pastResultsLabel: 'Past results',
     },
 
     studio: {
-      heading: 'Who’s watching.',
+      heading: 'A deeper look.',
       sub: 'Audience numbers from each creator’s YouTube Studio, or their media kit where marked. Original Studio screenshots are below each set.',
       periodLabel: '{source} · {period}',
       sourceLabel: 'YouTube Studio',
@@ -335,13 +278,6 @@ export const rosterContent: RosterContent = {
       carouselTabsLabel: 'Choose a creator',
       carouselPrev: 'Previous creator',
       carouselNext: 'Next creator',
-    },
-
-    proof: {
-      heading: 'What past sponsorships looked like.',
-      // Shown next to the big percentage.
-      statCaption: 'of normal views. That’s the average for sponsored videos across the roster.',
-      statNote: 'In other words, sponsorships don’t cost the creator their audience.',
     },
 
     whatYouGet: {

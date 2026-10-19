@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-18T21:41:28Z",
-  "dataAsOf": "2026-10-18T21:41:29Z",
+  "generatedAt": "2026-10-19T20:27:36Z",
+  "dataAsOf": "2026-10-19T20:27:37Z",
   "window": "last 15 long-form videos (over 3 minutes, no livestreams)",
   "roster": {
     "brands": [
@@ -21,18 +21,19 @@
       "Superblocks",
       "TrueFoundry"
     ],
-    "combinedMedianViews": 162633,
-    "combinedUploadsPerMonth": 25.3,
+    "combinedMedianViews": 162927,
+    "combinedUploadsPerMonth": 25.6,
     "sponsoredViewsVsMedian": 0.9
   },
   "creators": [
     {
       "id": "creator-a",
       "alias": "Creator A",
-      "niche": null,
+      "niche": "AI models & agents for builders",
+      "summary": "Technical breakdowns of new AI model releases, both frontier and open-weight, with hands-on demos: agent frameworks and harnesses, small and local models, speech, voice and text-to-speech. Focuses on what actually matters for developers building with AI.",
       "subscriberCount": 136000,
-      "medianViews": 65808,
-      "meanViews": 100138,
+      "medianViews": 65933,
+      "meanViews": 100263,
       "videosAnalysed": 15,
       "uploadsPerMonth": 9.0,
       "recentVideos": [
@@ -69,14 +70,13 @@
       ],
       "sponsoredViewsVsMedian": 0.82,
       "audience": {
-        "usUkPercent": 37.0,
+        "usUkPercent": null,
         "topCountries": [],
-        "ageBand": "25–54 (78.8%)",
+        "ageBand": null,
         "avgViewDuration": null
       },
       "pastResults": [],
       "todo": [
-        "niche",
         "recentVideos[].topic",
         "audience.*",
         "pastResults"
@@ -85,16 +85,17 @@
     {
       "id": "creator-b",
       "alias": "Creator B",
-      "niche": null,
+      "niche": "AI coding workflows & tools",
+      "summary": "Fast-paced videos on getting more out of AI coding agents: setup tips, add-ons and workflows, trending open-source tools and GitHub repos, and head-to-head comparisons of the newest AI models. Aimed at developers who use AI coding assistants every day.",
       "subscriberCount": 172000,
-      "medianViews": 51397,
-      "meanViews": 68817,
+      "medianViews": 51562,
+      "meanViews": 69101,
       "videosAnalysed": 15,
-      "uploadsPerMonth": 11.0,
+      "uploadsPerMonth": 11.3,
       "recentVideos": [
         {
           "month": "2026-10",
-          "views": 46000,
+          "views": 47000,
           "durationMinutes": 13,
           "topic": null
         },
@@ -119,14 +120,13 @@
       "brandCategories": [],
       "sponsoredViewsVsMedian": null,
       "audience": {
-        "usUkPercent": 25.2,
+        "usUkPercent": null,
         "topCountries": [],
         "ageBand": null,
         "avgViewDuration": null
       },
       "pastResults": [],
       "todo": [
-        "niche",
         "recentVideos[].topic",
         "audience.*",
         "pastResults"
@@ -135,16 +135,17 @@
     {
       "id": "creator-c",
       "alias": "Creator C",
-      "niche": null,
-      "subscriberCount": 483000,
-      "medianViews": 45428,
-      "meanViews": 56456,
+      "niche": "AI coding & app-building tutorials",
+      "summary": "Long, hands-on build tutorials for developers and tech teams: AI coding tools, AI agents and automated workflows, and shipping real production apps end to end (payments, billing, hosting, data, SEO, compliance). Beginner-friendly but practical; sponsors are typically woven into the build itself.",
+      "subscriberCount": 484000,
+      "medianViews": 45432,
+      "meanViews": 56870,
       "videosAnalysed": 15,
       "uploadsPerMonth": 5.3,
       "recentVideos": [
         {
           "month": "2026-10",
-          "views": 74000,
+          "views": 80000,
           "durationMinutes": 22,
           "topic": null
         },
@@ -179,14 +180,13 @@
       ],
       "sponsoredViewsVsMedian": 0.92,
       "audience": {
-        "usUkPercent": 13.6,
+        "usUkPercent": null,
         "topCountries": [],
-        "ageBand": "25–54 (81.1%)",
+        "ageBand": null,
         "avgViewDuration": null
       },
       "pastResults": [],
       "todo": [
-        "niche",
         "recentVideos[].topic",
         "audience.*",
         "pastResults"

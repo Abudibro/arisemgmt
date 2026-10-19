@@ -8,6 +8,8 @@ export type FormatKey = 'integration' | 'dedicated';
 
 export interface CreatorContent {
   niche: string | null;
+  /** What the channel's content is about, a few sentences. null = use the export's summary. */
+  summary: string | null;
   audience: {
     /** 0–100, e.g. 25.2 for 25.2% (same scale as the export) */
     usUkPercent: number | null;
@@ -68,7 +70,6 @@ export interface Step {
   tag?: string;
 }
 
-export type WhyIcon = 'tools' | 'search' | 'demo';
 
 export interface FormatOffer {
   key: FormatKey;
@@ -81,10 +82,6 @@ export interface FormatOffer {
 
 export interface RosterContent {
   creators: Record<CreatorId, CreatorContent>;
-  /** Roster-level proof, e.g. "AI infrastructure brand · dedicated video · 71k views" */
-  caseNotes: string[];
-  /** Optional brand → square monochrome mark under /public, shown before the brand name. */
-  sponsorLogos: Record<string, string>;
   formats: FormatOffer[];
   steps: Step[];
   faq: { question: string; answer: string }[];
@@ -100,33 +97,18 @@ export interface RosterCopy {
     headingPrefix: string;
     headingHighlight: string;
     lede: string;
-    stats: { combinedMedianViews: string; combinedUploadsPerMonth: string; usUkPercent: string };
-    primaryCta: string;
-    secondaryCta: string;
     /** {dataAsOf} → "Oct 2026" */
     footnote: string;
   };
-  sponsors: { label: string; pause: string; play: string };
-  why: { heading: string; items: (Step & { icon?: WhyIcon })[] };
   roster: {
     heading: string;
     sub: string;
-    /** {n} → videos analysed */
     medianViewsLabel: string;
     subscribersLabel: string;
     uploadsLabel: string;
-    audienceLabels: { usUkPercent: string; topCountries: string; ageBand: string; avgViewDuration: string };
+    usUkLabel: string;
     /** Accessible name for the YouTube mark beside each alias */
     platformLabel: string;
-    recentVideosLabel: string;
-    viewsSuffix: string;
-    minutesSuffix: string;
-    /** {count}, {n} */
-    sponsorshipLine: string;
-    formatCounts: { integration: [string, string]; dedicated: [string, string] };
-    /** {x} → "97%" */
-    sponsoredViewsLine: string;
-    pastResultsLabel: string;
   };
   studio: {
     heading: string;
@@ -142,7 +124,6 @@ export interface RosterCopy {
     carouselPrev: string;
     carouselNext: string;
   };
-  proof: { heading: string; statCaption: string; statNote: string };
   whatYouGet: { heading: string; note: string };
   howItWorks: { heading: string };
   terms: { heading: string };
@@ -164,6 +145,7 @@ export interface RosterCreator {
   id: CreatorId;
   alias: string;
   niche: string | null;
+  summary: string | null;
   subscriberCount: number;
   medianViews: number;
   videosAnalysed: number;
@@ -180,12 +162,9 @@ export interface RosterCreator {
 
 export interface RosterData {
   dataAsOf: string;
-  brands: { name: string; logoSrc: string | null }[];
   combinedMedianViews: number;
   combinedUploadsPerMonth: number;
-  sponsoredViewsVsMedian: number | null;
   /** Average of the creators whose usUkPercent is filled in; null if none are. */
   usUkPercent: number | null;
-  caseNotes: string[];
   creators: RosterCreator[];
 }

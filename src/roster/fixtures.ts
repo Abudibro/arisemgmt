@@ -39,6 +39,7 @@ export function makeExport(): DeckExport {
 
 const emptyCreator = (): CreatorContent => ({
   niche: null,
+  summary: null,
   audience: { usUkPercent: null, topCountries: [], ageBand: null, avgViewDuration: null },
   recentVideoTopics: [null, null, null],
   pastResults: [],
@@ -50,8 +51,6 @@ export function makeContent(): RosterContent {
   return {
     ...structuredClone(rosterContent),
     creators: { 'creator-a': emptyCreator(), 'creator-b': emptyCreator(), 'creator-c': emptyCreator() },
-    caseNotes: [],
-    sponsorLogos: {},
     founder: null,
   };
 }

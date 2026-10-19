@@ -32,6 +32,8 @@ export interface ExportCreator {
   id: CreatorId;
   alias: string;
   niche: string | null;
+  /** A few sentences on what the channel covers. Missing from older exports. */
+  summary?: string | null;
   subscriberCount: number;
   medianViews: number;
   meanViews: number;
@@ -138,6 +140,7 @@ function checkCreator(raw: unknown, i: number, problems: string[]) {
   c.str(raw, 'id', path);
   c.str(raw, 'alias', path);
   c.strOrNull(raw, 'niche', path);
+  if ('summary' in raw) c.strOrNull(raw, 'summary', path);
   for (const key of ['subscriberCount', 'medianViews', 'meanViews', 'videosAnalysed', 'uploadsPerMonth', 'confirmedSponsorshipCount']) {
     c.num(raw, key, path);
   }

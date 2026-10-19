@@ -6,9 +6,6 @@
 import type { DeckExport } from './schema.ts';
 import type { RosterContent, RosterCreator, RosterData } from './types.ts';
 
-/** Sponsored-vs-median ratios below this aren't shown — a weak number reads worse than none. */
-export const SPONSORED_RATIO_MIN = 0.8;
-
 /** How many recent videos a creator card lists. */
 export const RECENT_VIDEOS_SHOWN = 3;
 
@@ -26,6 +23,7 @@ export function mergeRoster(data: DeckExport, content: RosterContent): RosterDat
       id: c.id,
       alias: c.alias,
       niche: pickText(manual.niche, c.niche),
+      summary: pickText(manual.summary, c.summary),
       subscriberCount: c.subscriberCount,
       medianViews: c.medianViews,
       videosAnalysed: c.videosAnalysed,
@@ -53,53 +51,32 @@ export function mergeRoster(data: DeckExport, content: RosterContent): RosterDat
 
   return {
     dataAsOf: data.dataAsOf,
-    brands: data.roster.brands
-      .filter((name) => filledText(name))
-      .map((name) => ({ name, logoSrc: filledText(content.sponsorLogos[name]) })),
     combinedMedianViews: data.roster.combinedMedianViews,
     combinedUploadsPerMonth: data.roster.combinedUploadsPerMonth,
-    sponsoredViewsVsMedian: data.roster.sponsoredViewsVsMedian,
     usUkPercent: usUk.length > 0 ? usUk.reduce((a, b) => a + b, 0) / usUk.length : null,
-    caseNotes: content.caseNotes.filter((note) => filledText(note)),
     creators,
   };
 }
 
 // ---------- show/hide rules ----------
 
-export const showSponsoredRatio = (ratio: number | null): ratio is number =>
-  ratio !== null && ratio >= SPONSORED_RATIO_MIN;
-
 export const visibleRecentVideos = (creator: RosterCreator) =>
   creator.recentVideos.slice(0, RECENT_VIDEOS_SHOWN).filter((video) => video.topic !== null);
 
 export const creatorsWithStudio = (data: RosterData) => data.creators.filter((c) => c.studio !== null);
 
-export const showProof = (data: RosterData) =>
-  showSponsoredRatio(data.sponsoredViewsVsMedian) || data.caseNotes.length > 0;
 
 // ---------- dev-only: what's still left to fill in ----------
 
 /** Human-readable list of every unfilled field, for the dev banner. */
 export function listUnfilled(data: RosterData): string[] {
   const missing: string[] = [];
-  if (data.brands.length === 0) missing.push('Roster: brands (export)');
-  if (data.sponsoredViewsVsMedian === null) missing.push('Roster: sponsoredViewsVsMedian (export)');
-  if (data.caseNotes.length === 0) missing.push('Roster: caseNotes');
 
   for (const c of data.creators) {
     const add = (field: string) => missing.push(`${c.alias}: ${field}`);
     if (c.niche === null) add('niche');
+    if (c.summary === null) add('summary');
     if (c.audience.usUkPercent === null) add('audience.usUkPercent');
-    if (c.audience.topCountries.length === 0) add('audience.topCountries');
-    if (c.audience.ageBand === null) add('audience.ageBand');
-    if (c.audience.avgViewDuration === null) add('audience.avgViewDuration');
-    const missingTopics = c.recentVideos
-      .slice(0, RECENT_VIDEOS_SHOWN)
-      .flatMap((video, i) => (video.topic === null ? [i + 1] : []));
-    if (missingTopics.length > 0) add(`recentVideoTopics (video ${missingTopics.join(', ')})`);
-    if (c.pastResults.length === 0) add('pastResults');
-    if (c.sponsoredViewsVsMedian === null) add('sponsoredViewsVsMedian (export)');
     if (c.studio === null) add('studio (YouTube Studio audience panel)');
   }
   return missing;

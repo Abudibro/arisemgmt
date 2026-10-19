@@ -23,16 +23,12 @@ describe('RosterPage with nothing filled in', () => {
 
   it('never shows placeholders or empty labels', () => {
     expect(plain).not.toMatch(/TBD|null|undefined|NaN/);
-    expect(plain).not.toContain('US/UK audience');
-    expect(plain).not.toContain('Recent videos');
-    expect(plain).not.toContain('Past results');
-    expect(plain).not.toContain('Top countries');
+    expect(plain).not.toContain('US or UK');
     expect(html).not.toContain('creator-niche');
-    expect(html).not.toContain('case-notes');
+    expect(html).not.toContain('creator-summary');
   });
 
-  it('shows computed stats and no prices', () => {
-    expect(plain).toContain('views per video across the roster 150k');
+  it('shows the data date and no prices', () => {
     expect(plain).toContain('Updated Oct 2026');
     expect(plain).not.toMatch(/\$\d/);
     expect(html).not.toContain('pricing');
@@ -45,26 +41,14 @@ describe('RosterPage with nothing filled in', () => {
 });
 
 describe('RosterPage hiding rules', () => {
-  it('hides the sponsors strip with no brands', () => {
-    const exp = makeExport();
-    expect(render(exp)).toContain('Our creators have run sponsorships with');
-    exp.roster.brands = [];
-    expect(render(exp)).not.toContain('Our creators have run sponsorships with');
-  });
-
-  it('shows a logo mark next to the name only for brands that have one', () => {
-    const content = makeContent();
-    content.sponsorLogos = { Docker: '/logos/docker.svg' };
-    const html = render(makeExport(), content);
-    expect(html.match(/class="sponsor-mark"/g)).toHaveLength(1);
-    expect(html).toContain('/logos/docker.svg');
-    expect(text(html)).toContain('Docker');
-    expect(text(html)).toContain('NVIDIA');
+  it('never mentions the creators’ past sponsorships', () => {
+    const plain = text(render());
+    expect(plain).not.toMatch(/sponsored videos|sponsorships with|Past results|usual views/i);
   });
 
   it('shows the YouTube Studio panel only for creators with studio data', () => {
     const content = makeContent();
-    expect(render(makeExport(), content)).not.toContain('Who’s watching.');
+    expect(render(makeExport(), content)).not.toContain('A deeper look.');
     content.creators['creator-b'].studio = {
       period: 'Last 28 days',
       gender: [{ label: 'Male', percent: 90 }],
@@ -75,7 +59,7 @@ describe('RosterPage hiding rules', () => {
     };
     const html = render(makeExport(), content);
     const plain = text(html);
-    expect(plain).toContain('Who’s watching.');
+    expect(plain).toContain('A deeper look.');
     expect(plain).toContain('United States 33.4%');
     expect(html.match(/class="studio-panel"/g)).toHaveLength(1);
     expect(plain).not.toContain('Device');
@@ -141,29 +125,14 @@ describe('RosterPage hiding rules', () => {
     expect(html).toContain('alt="Abdurahman, Founder, Arise"');
   });
 
-  it('hides the proof section when the ratio is weak and there are no case notes', () => {
-    const exp = makeExport();
-    exp.roster.sponsoredViewsVsMedian = 0.7;
-    expect(render(exp)).not.toContain('What past sponsorships looked like.');
-  });
-
-  it('hides a weak per-creator ratio line', () => {
-    const exp = makeExport();
-    exp.creators[0].sponsoredViewsVsMedian = 0.79;
-    exp.creators[1].sponsoredViewsVsMedian = 0.85;
-    const plain = text(render(exp));
-    expect(plain).not.toContain('get 79%');
-    expect(plain).toContain('Sponsored videos get 85% of this channel’s usual views.');
-  });
-
   it('renders filled fields', () => {
     const content = makeContent();
     content.creators['creator-a'].niche = 'Claude Code builds';
+    content.creators['creator-a'].summary = 'Builds apps with Claude Code.';
     content.creators['creator-a'].audience.usUkPercent = 25.2;
-    content.creators['creator-a'].recentVideoTopics = ['Building an agent', null, null];
     const plain = text(render(makeExport(), content));
     expect(plain).toContain('Claude Code builds');
-    expect(plain).toContain('US/UK audience 25%');
-    expect(plain).toContain('Building an agent · Sep 2026 · 61k views · 14 min');
+    expect(plain).toContain('Builds apps with Claude Code.');
+    expect(plain).toContain('of viewers in the US or UK 25%');
   });
 });

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { listUnfilled, mergeRoster, showProof, showSponsoredRatio, visibleRecentVideos } from './merge.ts';
+import { listUnfilled, mergeRoster, visibleRecentVideos } from './merge.ts';
 import { makeContent, makeExport } from './fixtures.ts';
 
 describe('mergeRoster', () => {
@@ -39,24 +39,9 @@ describe('mergeRoster', () => {
     content.creators['creator-c'].audience.usUkPercent = 37;
     expect(mergeRoster(makeExport(), content).usUkPercent).toBeCloseTo(25.3);
   });
-
-  it('attaches optional sponsor logos', () => {
-    const content = makeContent();
-    content.sponsorLogos = { Docker: '/logos/docker.svg' };
-    expect(mergeRoster(makeExport(), content).brands).toEqual([
-      { name: 'Docker', logoSrc: '/logos/docker.svg' },
-      { name: 'NVIDIA', logoSrc: null },
-    ]);
-  });
 });
 
 describe('show/hide rules', () => {
-  it('sponsored ratio shows only at 0.8 or above', () => {
-    expect(showSponsoredRatio(null)).toBe(false);
-    expect(showSponsoredRatio(0.79)).toBe(false);
-    expect(showSponsoredRatio(0.8)).toBe(true);
-  });
-
   it('recent videos without a topic are hidden', () => {
     const content = makeContent();
     content.creators['creator-a'].recentVideoTopics = [null, 'Only this one', null];
@@ -65,22 +50,10 @@ describe('show/hide rules', () => {
     expect(visibleRecentVideos(b)).toEqual([]);
   });
 
-  it('proof shows if either the ratio or case notes exist', () => {
-    const exp = makeExport();
-    exp.roster.sponsoredViewsVsMedian = 0.5;
-    const content = makeContent();
-    expect(showProof(mergeRoster(exp, content))).toBe(false);
-    content.caseNotes = ['AI infrastructure brand · dedicated video · 71k views'];
-    expect(showProof(mergeRoster(exp, content))).toBe(true);
-    exp.roster.sponsoredViewsVsMedian = 0.94;
-    expect(showProof(mergeRoster(exp, makeContent()))).toBe(true);
-  });
-
   it('lists what is unfilled', () => {
     const content = makeContent();
     const missing = listUnfilled(mergeRoster(makeExport(), content));
     expect(missing).toContain('Creator A: niche');
-    expect(missing).toContain('Creator A: recentVideoTopics (video 1, 2, 3)');
-    expect(missing).toContain('Roster: caseNotes');
+    expect(missing).toContain('Creator A: summary');
   });
 });
