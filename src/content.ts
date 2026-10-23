@@ -19,6 +19,8 @@ export const CTA = {
 
 export const NAV = {
   howWeWorkLink: 'How we work',
+  rosterLink: 'Our creators',
+  rosterHref: '/roster/',
 };
 
 export const HERO = {
@@ -34,8 +36,15 @@ export const HOW_WE_WORK = {
   heading: "Here's how it works.",
   subheading: 'Four simple steps, from start to finish.',
   cta: {
-    brand: { text: 'Step one is a short call about your product.', button: 'Book a call' },
-    influencer: { text: 'Step one is a short call about your channel.', button: 'Book a call' },
+    // Brands only: the low-risk start, with the full options on /roster.
+    // TODO: Abdurahman to confirm the 10% series discount (same as /roster).
+    brand: {
+      offer: 'Start with one video. If it works, add two more at 10% off.',
+      text: 'Step one is a short call about your product.',
+      button: 'Book a call',
+      link: { label: 'See the creators and options', href: '/roster/#start' },
+    },
+    influencer: { offer: null, text: 'Step one is a short call about your channel.', button: 'Book a call', link: null },
   },
   toggle: {
     brandLabel: 'For Brands',

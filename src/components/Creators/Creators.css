@@ -1,5 +1,18 @@
 /* ---------- creators (anonymous roster proof, right after the hero) ---------- */
 
+/* Wider than the default .sec-head so the heading sits on two lines, not three. */
+.creators .sec-head {
+  max-width: 34rem;
+}
+
+.creators .sec-head h2 {
+  max-width: none;
+}
+
+.creators .sec-head p {
+  max-width: 46ch;
+}
+
 .creators-stats {
   margin: 2.2rem 0 0;
   display: flex;

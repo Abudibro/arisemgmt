@@ -32,8 +32,16 @@
   color: var(--fg);
 }
 
+.nav-links a.text[aria-current="page"] {
+  color: var(--fg);
+}
+
 @media (max-width: 620px) {
-  .nav-links a.text {
+  .nav-links {
+    gap: 1rem;
+  }
+
+  .nav-links a.text:not(.text-keep) {
     display: none;
   }
 }

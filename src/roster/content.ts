@@ -247,7 +247,6 @@ export const rosterContent: RosterContent = {
   },
 
   copy: {
-    nav: { cta: 'Email us' },
 
     hero: {
       tag: 'Creator roster',
@@ -285,13 +284,35 @@ export const rosterContent: RosterContent = {
       note: 'Want to reuse the video in your own ads? Usage rights are priced separately. Ask and we’ll quote.',
     },
 
+    // TODO: Abdurahman to confirm the 10% series discount and the stop-anytime terms.
+    start: {
+      heading: 'Start with one video, or go for three.',
+      sub: 'Same creator either way. You approve the script and the final cut on every video.',
+      options: [
+        {
+          label: 'Option 1',
+          title: 'One video to test',
+          body: 'One video with the creator who fits your product best. See how it performs before committing to more.',
+        },
+        {
+          label: 'Option 2',
+          title: 'A 3-video series',
+          body: 'One video a month for three months, with 10% off each video. Repeat exposure to the same audience. Stop after the first if it isn’t working.',
+          badge: '10% off',
+          featured: true,
+        },
+      ],
+      report: 'Every video comes with a results report 7 and 30 days after it goes live.',
+      rates: 'Rates are based on each creator’s recent views. Reply and we’ll send them within a day.',
+    },
+
     howItWorks: { heading: 'How it works.' },
 
     terms: { heading: 'The details.' },
 
     nextStep: {
       heading: 'Ready when you are.',
-      body: 'Reply to the email this link came in, or write to us with the creator and format you want. You’ll get a brief and an invoice within a day.',
+      body: 'Email us with the creator and option you want. You’ll get a brief and an invoice within a day.',
       cta: 'Email us',
       mailSubject: 'Sponsorship — [creator] / [format]',
       mailBody: 'Hi Abdurahman,\n\nWe’d like to go ahead.\n\nCreator (A, B or C):\nFormat (integration or dedicated video):\nProduct link:\nPreferred month:\n\nThanks,',

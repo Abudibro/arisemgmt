@@ -2,7 +2,7 @@
   command = "npm run build"
   publish = "dist"
 
-# The roster page is unlisted: keep it out of search results.
+# The roster page is linked from the nav but kept out of search results.
 [[headers]]
   for = "/roster"
   [headers.values]

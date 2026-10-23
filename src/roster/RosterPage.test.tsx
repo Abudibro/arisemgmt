@@ -34,9 +34,11 @@ describe('RosterPage with nothing filled in', () => {
     expect(html).not.toContain('pricing');
   });
 
-  it('swaps the nav CTA for "Email us" and hides "How we work"', () => {
-    expect(html).toContain('href="mailto:abdurahman@arisemgmt.co" class="btn btn-primary">Email us');
-    expect(plain).not.toContain('How we work');
+  it('uses the homepage nav, with links back to the homepage', () => {
+    expect(html).toContain('href="/#top"');
+    expect(html).toContain('href="/#how"');
+    expect(html).toContain('href="/#contact" class="btn btn-primary">Book a call');
+    expect(html).toContain('aria-current="page"');
   });
 });
 

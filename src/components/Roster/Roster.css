@@ -512,6 +512,88 @@
   }
 }
 
+/* ---------- start options: one test video or a 3-video series ---------- */
+
+.start-options .sec-head {
+  max-width: 60ch;
+}
+
+.option-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+  margin-top: 2.4rem;
+}
+
+.option {
+  position: relative;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.option.is-featured {
+  border-color: var(--accent);
+  background: linear-gradient(180deg, var(--accent-tint), var(--panel) 70%);
+  box-shadow: 0 0 0 1px rgba(212, 255, 58, 0.15), 0 20px 50px -30px rgba(212, 255, 58, 0.35);
+}
+
+.option-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.option-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-soft);
+}
+
+.option-badge {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--on-accent);
+  background: var(--accent);
+  border-radius: 999px;
+  padding: 0.2rem 0.7rem;
+}
+
+.option h3 {
+  margin-top: 0.9rem;
+  font-size: clamp(1.4rem, 1.2rem + 0.8vw, 1.9rem);
+}
+
+.option p {
+  margin-top: 0.7rem;
+  color: var(--fg-soft);
+  max-width: 48ch;
+}
+
+.option-notes {
+  margin-top: 2rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 0.4rem;
+  color: var(--fg-soft);
+}
+
+.option-notes .option-report {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+@media (max-width: 780px) {
+  .option-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .roster-note {
   margin-top: 2rem;
   color: var(--fg-soft);

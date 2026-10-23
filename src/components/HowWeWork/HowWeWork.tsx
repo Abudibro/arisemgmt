@@ -124,7 +124,11 @@ export default function HowWeWork({ audience, onAudienceChange }: HowWeWorkProps
           </ol>
 
           <div className="how-cta">
-            <p>{cta.text}</p>
+            <div className="how-cta-copy">
+              {cta.offer && <p className="how-cta-offer">{cta.offer}</p>}
+              <p>{cta.text}</p>
+              {cta.link && <a href={cta.link.href} className="how-cta-link">{cta.link.label} →</a>}
+            </div>
             <a href="#contact" className="btn btn-primary">{cta.button}</a>
           </div>
         </div>

@@ -3,21 +3,31 @@ import { CTA, NAV } from '../../content.ts';
 import './Nav.css';
 
 interface NavProps {
-  /** Right-hand button. Defaults to the homepage's "Book a call". */
-  cta?: { label: string; href: string };
-  showHowLink?: boolean;
+  /** Which page this nav sits on, so its own link is marked as current. */
+  page?: 'home' | 'roster';
 }
 
-export default function Nav({ cta = { label: CTA.bookACall, href: '#contact' }, showHowLink = true }: NavProps) {
+/**
+ * The same nav on every page. Links go through "/" so they work from /roster
+ * too; on the homepage they just scroll.
+ */
+export default function Nav({ page = 'home' }: NavProps) {
   return (
     <header className="nav">
       <div className="wrap nav-in">
-        <a href="#top" className="mark">
+        <a href="/#top" className="mark">
           <img src="/arise-mark-light.svg" alt={BRAND} />
         </a>
         <nav className="nav-links">
-          {showHowLink && <a href="#how" className="text">{NAV.howWeWorkLink}</a>}
-          <a href={cta.href} className="btn btn-primary">{cta.label}</a>
+          <a href="/#how" className="text">{NAV.howWeWorkLink}</a>
+          <a
+            href={NAV.rosterHref}
+            className="text text-keep"
+            aria-current={page === 'roster' ? 'page' : undefined}
+          >
+            {NAV.rosterLink}
+          </a>
+          <a href="/#contact" className="btn btn-primary">{CTA.bookACall}</a>
         </nav>
       </div>
     </header>

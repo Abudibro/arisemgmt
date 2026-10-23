@@ -91,7 +91,6 @@ export interface RosterContent {
 }
 
 export interface RosterCopy {
-  nav: { cta: string };
   hero: {
     tag: string;
     headingPrefix: string;
@@ -125,6 +124,13 @@ export interface RosterCopy {
     carouselNext: string;
   };
   whatYouGet: { heading: string; note: string };
+  start: {
+    heading: string;
+    sub: string;
+    options: { label: string; title: string; body: string; badge?: string; featured?: boolean }[];
+    report: string;
+    rates: string;
+  };
   howItWorks: { heading: string };
   terms: { heading: string };
   nextStep: {

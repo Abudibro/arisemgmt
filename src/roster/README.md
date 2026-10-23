@@ -1,6 +1,6 @@
 # /roster data
 
-The unlisted roster page (`/roster`) is built from two files in this folder.
+The roster page (`/roster`, linked from the homepage nav, noindexed) is built from two files in this folder.
 
 ## 1. `deck-export.public.json` — replace the sample
 

@@ -192,8 +192,41 @@
   background: var(--accent-tint);
 }
 
+.how-cta-copy {
+  display: grid;
+  gap: 0.3rem;
+}
+
 .how-cta p {
   font-weight: 600;
+}
+
+/* The low-risk start, brands only. */
+.how-cta .how-cta-offer {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--accent);
+}
+
+.how-cta-offer + p {
+  color: var(--fg-soft);
+  font-weight: 500;
+}
+
+.how-cta-link {
+  width: fit-content;
+  margin-top: 0.2rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--fg-soft);
+  text-underline-offset: 3px;
+}
+
+.how-cta-link:hover {
+  text-decoration-color: var(--fg);
 }
 
 /* ---------- narrow screens: stack, rail stays ---------- */
